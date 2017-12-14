@@ -7,7 +7,8 @@
 //
 
 #import "GalleryViewController.h"
-#import <MMImagePickerController.h>
+//#import <MMImagePickerController.h>
+#import "MMImagePickerController.h"
 
 @interface GalleryViewController ()<MMImagePickerDelegate>
 {

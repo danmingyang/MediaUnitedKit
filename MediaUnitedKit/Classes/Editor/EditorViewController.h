@@ -6,8 +6,8 @@
 //  Copyright © 2017年 LEA. All rights reserved.
 //
 
-#import "BaseViewController.h"
+#import <UIKit/UIKit.h>
 
-@interface EditorViewController : BaseViewController
+@interface EditorViewController : UIViewController
 
 @end

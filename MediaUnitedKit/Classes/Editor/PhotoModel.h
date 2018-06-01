@@ -10,9 +10,9 @@
 
 @interface PhotoModel : JKDBModel
 
-//文件名
+// 文件名
 @property (nonatomic,copy) NSString *fileName;
-//是否已经黑白化
+// 是否已经黑白化
 @property (nonatomic,assign) BOOL isSketch;
 
 @end

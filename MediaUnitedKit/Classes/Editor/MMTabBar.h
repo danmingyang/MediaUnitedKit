@@ -11,7 +11,7 @@
 @protocol MMTabBarDelegate;
 @interface MMTabBar : UIView
 
-//代理
+// 代理
 @property (nonatomic,assign) id<MMTabBarDelegate> delegate;
 
 - (MMTabBar *)initWithFrame:(CGRect)frame

@@ -11,7 +11,7 @@ static NSString *kAssetsGroup = @"MUK";
 @implementation Utility
 
 #pragma mark - 时间
-//获取当前时间的时间戳(秒)
+// 获取当前时间的时间戳(秒)
 + (long long)getNowTimestampSec
 {
     NSDate *dat = [NSDate dateWithTimeIntervalSinceNow:0];
@@ -20,7 +20,7 @@ static NSString *kAssetsGroup = @"MUK";
     return (int)Timestamp;
 }
 
-//获取当前时间的时间戳(毫秒)
+// 获取当前时间的时间戳(毫秒)
 + (long long)getNowTimestampMesc
 {
     NSDate *date = [NSDate date];
@@ -28,7 +28,7 @@ static NSString *kAssetsGroup = @"MUK";
     return timeInterval;
 }
 
-//获取当前时间的时间戳字符串(秒)
+// 获取当前时间的时间戳字符串(秒)
 + (NSString *)getNowTimestampString
 {
     NSString *timeString = [self getDateByTimestamp:[self getNowTimestampSec] type:17];
@@ -45,7 +45,7 @@ static NSString *kAssetsGroup = @"MUK";
 }
 
 #pragma mark - 时间戳与日期的相互转换
-//时间戳转日期
+// 时间戳转日期
 + (NSString *)getDateByTimestamp:(long long)timestamp type:(NSInteger)timeType
 {
     if (timestamp == 0) {
@@ -58,7 +58,7 @@ static NSString *kAssetsGroup = @"MUK";
     [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
     dateFormatter.timeZone = [NSTimeZone timeZoneWithName:@"Asia/Shanghai"];
     
-    //分类处理
+    // 分类处理
     switch (timeType)
     {
         case 0: {
@@ -140,7 +140,7 @@ static NSString *kAssetsGroup = @"MUK";
     return timeString;
 }
 
-//日期转时间戳
+// 日期转时间戳
 + (NSInteger)getTimestampByDate:(NSString *)dateString type:(NSInteger)timeType;
 {
     if (!dateString) {
@@ -236,7 +236,7 @@ static NSString *kAssetsGroup = @"MUK";
 }
 
 #pragma mark - 文件、路劲
-//doc路径
+// doc路径
 +( NSString *)getDocDir
 {
     NSArray *searchPaths =NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);

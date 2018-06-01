@@ -35,7 +35,7 @@ static MMAudioUtil *audioUtil = nil;
 }
 
 #pragma mark - >>>录制相关
-//开始录制
+// 开始录制
 - (void)beginRecord
 {
     AVAudioSession *audioSession = [AVAudioSession sharedInstance];
@@ -52,7 +52,7 @@ static MMAudioUtil *audioUtil = nil;
                                    [NSNumber numberWithInt:2], AVNumberOfChannelsKey,
                                    [NSNumber numberWithInt: AVAudioQualityMin],AVEncoderAudioQualityKey, nil];
     
-    //获取音频文件的路径:xxxx/Audio/时间戳.caf
+    // 获取音频文件的路径:xxxx/Audio/时间戳.caf
     filePath = [Utility getAudioFilePath];
     NSURL *audioURL = [NSURL fileURLWithPath:filePath];
     NSError *error;
@@ -74,7 +74,7 @@ static MMAudioUtil *audioUtil = nil;
     }
 }
 
-//取消录制
+// 取消录制
 - (void)cancelRecord
 {
     [audioRecorder stop];
@@ -85,21 +85,21 @@ static MMAudioUtil *audioUtil = nil;
     [audioSession setActive:NO error:nil];
 }
 
-//完成录制>>返回音频路径
+// 完成录制>>返回音频路径
 - (NSString *)finishRecord
 {
     [audioRecorder stop],audioRecorder = nil;
     AVAudioSession *audioSession = [AVAudioSession sharedInstance];
     [audioSession setActive:NO error:nil];
-    //aac、caf 到mp3转换、并写入数据
+    // aac、caf 到mp3转换、并写入数据
     NSString *mp3Path = [self audioToMP3:filePath];
     return mp3Path;
 }
 
-//音频转码caf转map3
+// 音频转码caf转map3
 - (NSString *)audioToMP3:(NSString *)cafPath
 {
-    //MP3路径
+    // MP3路径
     NSString *mp3Path = [cafPath stringByReplacingOccurrencesOfString:@".caf" withString:@".mp3"];
     @try {
         int read, write;
@@ -122,7 +122,7 @@ static MMAudioUtil *audioUtil = nil;
             } else {
                 write = lame_encode_buffer_interleaved(lame, pcm_buffer, read, mp3_buffer, MP3_SIZE);
             }
-            //转换完的音频写入到指定路径下
+            // 转换完的音频写入到指定路径下
             fwrite(mp3_buffer, write, 1, mp3);
         } while (read != 0);
         
@@ -153,7 +153,7 @@ static MMAudioUtil *audioUtil = nil;
 }
 
 #pragma mark - >>>播放相关
-//播放某路径下的文件
+// 播放某路径下的文件
 - (void)playAudioByFileURL:(NSURL *)url;
 {
     if (audioPlayer) {
@@ -164,22 +164,22 @@ static MMAudioUtil *audioUtil = nil;
     AVPlayerItem *playerItem = [[AVPlayerItem alloc] initWithURL:url];
     audioPlayer = [[AVPlayer alloc] initWithPlayerItem:playerItem];
     [audioPlayer play];
-    //扬声器
+    // 扬声器
     AVAudioSession *session = [AVAudioSession sharedInstance];
     [session setCategory:AVAudioSessionCategoryPlayAndRecord withOptions:AVAudioSessionCategoryOptionDefaultToSpeaker error:nil];
-    //添加观察者
+    // 添加观察者
     _isPlaying = YES;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(playToEnd) name:AVPlayerItemDidPlayToEndTimeNotification object:playerItem];
 }
 
-//播放
+// 播放
 - (void)play
 {
     _isPlaying = YES;
     [audioPlayer play];
 }
 
-//暂停
+// 暂停
 - (void)pause
 {
     _isPlaying = NO;

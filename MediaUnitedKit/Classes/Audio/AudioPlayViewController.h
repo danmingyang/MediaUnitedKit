@@ -6,9 +6,9 @@
 //  Copyright © 2017年 LEA. All rights reserved.
 //
 
-#import "BaseViewController.h"
+#import <UIKit/UIKit.h>
 
-@interface AudioPlayViewController : BaseViewController
+@interface AudioPlayViewController : UIViewController
 
 @property (nonatomic,copy) NSString *mp3FileName;
 

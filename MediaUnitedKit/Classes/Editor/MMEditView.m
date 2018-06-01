@@ -26,24 +26,21 @@
         layer.backgroundColor = [RGBColor(190, 193, 195, 1.0) CGColor];
         layer.frame = CGRectMake(0, 0, self.width, 0.7);
         [self.layer addSublayer:layer];
-        
-        //取消按钮
+        // 取消按钮
         UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 60, 50)];
         button.backgroundColor = [UIColor clearColor];
         button.tag = 101;
         [button setImage:[UIImage imageNamed:@"menu_cancel"] forState:UIControlStateNormal];
         [button addTarget:self action:@selector(btClicked:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:button];
-        
-        //完成按钮
+        // 完成按钮
         button = [[UIButton alloc] initWithFrame:CGRectMake(kWidth-60, 0, 60, 50)];
         button.backgroundColor = [UIColor clearColor];
         button.tag = 102;
         [button setImage:[UIImage imageNamed:@"menu_finish"] forState:UIControlStateNormal];
         [button addTarget:self action:@selector(btClicked:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:button];
-        
-        //中间的图片
+        // 中间的图片
         [self addSubview:self.midImageView];
     }
     return self;
@@ -59,7 +56,7 @@
 {
     if (!_midImageView) {
         CGFloat h = 28;
-        _midImageView = [[UIImageView alloc] initWithFrame:CGRectMake((kWidth-h)/2, (self.height-h)/2, h, h)];
+        _midImageView = [[UIImageView alloc] initWithFrame:CGRectMake((kWidth-h)/2, (50-h)/2, h, h)];
     }
     return _midImageView;
 }

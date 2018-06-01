@@ -17,13 +17,13 @@
         self.backgroundColor = [UIColor whiteColor];
         self.userInteractionEnabled = YES;
         
-        //滚动视图
+        // 滚动视图
         UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.width, self.height)];
         scrollView.backgroundColor = [UIColor clearColor];
         scrollView.userInteractionEnabled = YES;
         scrollView.contentSize = CGSizeMake((k_BORDER_WIDTH + k_MARGIN) * 7, 0);
         [self addSubview:scrollView];
-        //边框小图
+        // 边框小图
         for (int i = 0; i < 7; i ++) {
             CGRect rect = CGRectMake(k_MARGIN + (k_BORDER_WIDTH + k_MARGIN) * i, k_MARGIN, k_BORDER_WIDTH, k_BORDER_HEIGHT);
             UIImageView *imageView = [[UIImageView alloc] initWithFrame:rect];

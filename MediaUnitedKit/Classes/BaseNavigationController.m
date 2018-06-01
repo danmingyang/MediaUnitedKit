@@ -21,10 +21,8 @@
     self.navigationBar.translucent = NO;
     self.navigationBar.barStyle = UIBarStyleBlackOpaque;
     self.navigationBar.tintColor = [UIColor whiteColor];
-    self.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor],
-                                               NSFontAttributeName:[UIFont boldSystemFontOfSize:19.0]};
-    [self.navigationBar setBackgroundImage:[UIImage imageNamed:@"default_navigationbar"]
-                             forBarMetrics:UIBarMetricsDefault];
+    self.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor],NSFontAttributeName:[UIFont boldSystemFontOfSize:19.0]};
+    [self.navigationBar setBackgroundImage:[UIImage imageNamed:@"default_navigationbar"] forBarMetrics:UIBarMetricsDefault];
 }
 
 #pragma mark -

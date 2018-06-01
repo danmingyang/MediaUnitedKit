@@ -6,6 +6,8 @@ target 'MediaUnitedKit' do
     pod "FMDB"
     pod "GPUImage"
     pod "Masonry"
+    pod "MMPhotoPicker"
+    pod "UUButton"
     pod "UMengAnalytics-NO-IDFA"
 
 end

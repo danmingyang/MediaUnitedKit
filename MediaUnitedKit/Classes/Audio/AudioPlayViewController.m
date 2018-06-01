@@ -30,7 +30,7 @@
     [self.view addSubview:self.remoteBtn];
     [self.view addSubview:self.pathLabel];
     [self.view addSubview:self.playBtn];
-    //播放
+    // 播放
     _audioUtil = [MMAudioUtil instance];
     _remoteMP3Path = @"http://39.108.135.80:8080/file/message/1234/voi/20170918114342.mp3";
 }
@@ -52,7 +52,7 @@
 - (void)playAudio
 {
     self.playBtn.selected = !self.playBtn.selected;
-    //播放
+    // 播放
     if (self.playBtn.selected) {
         NSURL *mp3URL = nil;
         if (self.localBtn.selected) {
@@ -62,7 +62,7 @@
         }
         [_audioUtil playAudioByFileURL:mp3URL];
         
-        //播放完成
+        // 播放完成
         __weak typeof(self) weakSelf = self;
         [_audioUtil setAudioPlayFinish:^{
             weakSelf.playBtn.selected = NO;

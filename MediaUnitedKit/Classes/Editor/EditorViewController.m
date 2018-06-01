@@ -15,23 +15,23 @@
 
 @interface EditorViewController ()<MMTabBarDelegate,MMEditViewDelegate,MMBorderViewDelegate>
 
-//当前编辑图片
+// 当前编辑图片
 @property (nonatomic, strong) UIImageView *imageView;
-//底部菜单
+// 底部菜单
 @property (nonatomic, strong) MMTabBar *tabBar;
-//底部菜单
+// 编辑菜单
 @property (nonatomic, strong) MMEditView *editView;
-//边框选择视图
+// 边框选择视图
 @property (nonatomic, strong) MMBorderView *borderView;
-//图片裁剪
+// 图片裁剪
 @property (nonatomic, strong) MMImageClipper *clipView;
-//编辑的model
+// 编辑的model
 @property (nonatomic, strong) PhotoModel *photoModel;
-//未编辑之前图片
+// 未编辑之前图片
 @property (nonatomic, strong) UIImage *originImage;
-//最后一次编辑后的图片
+// 最后一次编辑后的图片
 @property (nonatomic, strong) UIImage *editImage;
-//记录编辑的索引
+// 记录编辑的索引
 @property (nonatomic, assign) NSInteger editIndex;
 
 @end
@@ -61,7 +61,7 @@
 
 - (void)clearTempPic
 {
-    //清空编辑的图片和Model
+    // 清空编辑的图片和Model
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         [PhotoModel clearTable];
         NSFileManager *manager = [NSFileManager defaultManager];
@@ -78,75 +78,75 @@
     _editIndex = index;
     switch (index)
     {
-        case 0: //裁剪
+        case 0: // 裁剪
         {
             self.title = @"裁剪";
             self.editView.midImage = [UIImage imageNamed:@"pic_cut"];
             [self showCutEditView];
             break;
         }
-        case 1: //旋转
+        case 1: // 旋转
         {
             self.editImage =  [self.imageView.image rotateImage];
-            //保存文件
+            // 保存文件
             NSString *fileName = [NSString stringWithFormat:@"%@.jpg",[Utility getNowTimestampString]];
             NSString *filePath = [[Utility getTempPicDir] stringByAppendingPathComponent:fileName];
             NSData *fileData = UIImageJPEGRepresentation(self.editImage, 0.5);
             BOOL isOK = [fileData writeToFile:filePath atomically:NO];
             if (isOK) {
-                //创建Model
+                // 创建Model
                 BOOL isSketch = _photoModel.isSketch;
                 _photoModel = [[PhotoModel alloc] init];
                 _photoModel.isSketch = isSketch;
                 _photoModel.fileName = fileName;
                 [_photoModel save];
-                //显示
+                // 显示
                 self.imageView.image = self.editImage;
             }
             break;
         }
-        case 2://加框
+        case 2:// 加框
         {
             self.title = @"加框";
             self.editView.midImage = [UIImage imageNamed:@"pic_border"];
             [self showBorderEditView];
             break;
         }
-        case 3: //素描化
+        case 3: // 素描化
         {
             if (_photoModel.isSketch) {
                 return;
             }
             self.editImage =  [self.imageView.image sketchImage];
-            //保存文件
+            // 保存文件
             NSString *fileName = [NSString stringWithFormat:@"%@.jpg",[Utility getNowTimestampString]];
             NSString *filePath = [[Utility getTempPicDir] stringByAppendingPathComponent:fileName];
             NSData *fileData = UIImageJPEGRepresentation(self.editImage, 0.5);
             BOOL isOK = [fileData writeToFile:filePath atomically:NO];
             if (isOK) {
-                //创建Model
+                // 创建Model
                 _photoModel = [[PhotoModel alloc] init];
                 _photoModel.isSketch = YES;
                 _photoModel.fileName = fileName;
                 [_photoModel save];
-                //显示
+                // 显示
                 self.imageView.image = self.editImage;
             }
             break;
         }
-        case 4: //撤销
+        case 4: // 撤销
         {
             PhotoModel *model = [PhotoModel findFirstByCriteria:[NSString stringWithFormat:@"WHERE PK < %d ORDER BY PK DESC LIMIT 1",_photoModel.pk]];
             if (model) {
-                //移除文件
+                // 移除文件
                 NSFileManager *manager = [NSFileManager defaultManager];
                 NSString *filePath = [[Utility getTempPicDir] stringByAppendingPathComponent:_photoModel.fileName];
                 if ([manager fileExistsAtPath:filePath]) {
                     [manager removeItemAtPath:filePath error:nil];
                 }
-                //移除实体
+                // 移除实体
                 [_photoModel deleteObject];
-                //重新复制
+                // 重新复制
                 _photoModel = model;
                 filePath = [[Utility getTempPicDir] stringByAppendingPathComponent:_photoModel.fileName];
                 self.editImage = [UIImage imageWithContentsOfFile:filePath];
@@ -166,19 +166,19 @@
 
 
 #pragma mark - 图片编辑
-//裁剪
+// 裁剪
 - (void)showCutEditView
 {
-    //加载视图
+    // 加载视图
     self.editView.top = kHeight;
     [self.view addSubview:self.editView];
-    //动画
+    // 动画
     [UIView animateWithDuration:0.3 animations:^{
-        self.tabBar.frame = CGRectMake(0, kHeight, kWidth, 50);
-        self.editView.frame = CGRectMake(0, kHeight-114, kWidth, 50);
-        CGSize toSize = CGSizeMake(kWidth-50, kHeight-114-50);
+        self.tabBar.frame = CGRectMake(0, kHeight, kWidth, kBottomHeight);
+        self.editView.frame = CGRectMake(0, kHeight-kTopBarHeight-kBottomHeight, kWidth, kBottomHeight);
+        CGSize toSize = CGSizeMake(kWidth-50, kHeight-kTopBarHeight-kBottomHeight-50);
         CGSize scaledSize = [MMImageClipper scaleAspectFromSize:self.imageView.image.size toSize:toSize];
-        self.imageView.frame = CGRectMake((kWidth-scaledSize.width)/2, (kHeight-114-scaledSize.height)/2, scaledSize.width, scaledSize.height);
+        self.imageView.frame = CGRectMake((kWidth-scaledSize.width)/2, (kHeight-kTopBarHeight-kBottomHeight-scaledSize.height)/2, scaledSize.width, scaledSize.height);
     } completion:^(BOOL finished) {
         CGFloat margin = 20;
         self.clipView = [[MMImageClipper alloc] initWithFrame:CGRectMake(self.imageView.left-margin, self.imageView.top-margin, self.imageView.width+2*margin, self.imageView.height+2*margin)];
@@ -188,66 +188,66 @@
     }];
 }
 
-//加框
+// 加框
 - (void)showBorderEditView
 {
-    //加载视图
+    // 加载视图
     self.borderView.top = kHeight;
     self.editView.top = kHeight+100;
     [self.view addSubview:self.editView];
     [self.view addSubview:self.borderView];
-    //动画
+    // 动画
     [UIView animateWithDuration:0.3 animations:^{
         self.tabBar.top = kHeight;
-        self.editView.top = kHeight-114;
+        self.editView.top = kHeight-kTopBarHeight-kBottomHeight;
         self.borderView.top = self.editView.top-100;
-        CGSize toSize = CGSizeMake(kWidth, kHeight-114-150);
+        CGSize toSize = CGSizeMake(kWidth, kHeight-kTopBarHeight-kBottomHeight-150);
         CGSize scaledSize = [MMImageClipper scaleAspectFromSize:self.imageView.image.size toSize:toSize];
-        self.imageView.frame = CGRectMake((kWidth-scaledSize.width)/2, (kHeight-214-scaledSize.height)/2, scaledSize.width, scaledSize.height);
+        self.imageView.frame = CGRectMake((kWidth-scaledSize.width)/2, (kHeight-kTopBarHeight-kBottomHeight-100-scaledSize.height)/2, scaledSize.width, scaledSize.height);
     }];
 }
 
 #pragma mark - MMEditViewDelegate
 - (void)editView:(MMEditView *)tabBar operateType:(OperateType)type
 {
-    if (_editIndex == 0) { //裁剪
+    if (_editIndex == 0) { // 裁剪
         if (type == kOperateTypeFinish) {
             self.editImage = [self.clipView getClippedImage:self.imageView];
-            //保存文件
+            // 保存文件
             NSString *fileName = [NSString stringWithFormat:@"%@.jpg",[Utility getNowTimestampString]];
             NSString *filePath = [[Utility getTempPicDir] stringByAppendingPathComponent:fileName];
             NSData *fileData = UIImageJPEGRepresentation(self.editImage, 0.5);
             BOOL isOK = [fileData writeToFile:filePath atomically:NO];
             if (isOK) {
-                //创建Model
+                // 创建Model
                 BOOL isSketch = _photoModel.isSketch;
                 _photoModel = [[PhotoModel alloc] init];
                 _photoModel.fileName = fileName;
                 _photoModel.isSketch = isSketch;
                 [_photoModel save];
-                //显示
+                // 显示
                 self.imageView.image = self.editImage;
             }
         }
         [self.clipView removeFromSuperview];
         [UIView animateWithDuration:0.3 animations:^{
-            self.tabBar.frame = CGRectMake(0, kHeight-114, kWidth, 50);
-            self.imageView.frame = CGRectMake(20, 25, kWidth-40, kHeight-114-50);
-            self.editView.frame = CGRectMake(0, kHeight, kWidth, 50);
+            self.tabBar.frame = CGRectMake(0, kHeight-kTopBarHeight-kBottomHeight, kWidth, kBottomHeight);
+            self.imageView.frame = CGRectMake(20, 25, kWidth-40, kHeight-kTopBarHeight-kBottomHeight-50);
+            self.editView.frame = CGRectMake(0, kHeight, kWidth, kBottomHeight);
         } completion:^(BOOL finished) {
             [self.editView removeFromSuperview];
             self.title = @"图片编辑";
         }];
-    } else { //加框
+    } else { // 加框
         if (type == kOperateTypeFinish) {
             self.editImage = self.imageView.image;
-            //保存文件
+            // 保存文件
             NSString *fileName = [NSString stringWithFormat:@"%@.jpg",[Utility getNowTimestampString]];
             NSString *filePath = [[Utility getTempPicDir] stringByAppendingPathComponent:fileName];
             NSData *fileData = UIImageJPEGRepresentation(self.editImage, 0.5);
             BOOL isOK = [fileData writeToFile:filePath atomically:NO];
             if (isOK) {
-                //创建Model
+                // 创建Model
                 _photoModel = [[PhotoModel alloc] init];
                 _photoModel.isSketch = NO;
                 _photoModel.fileName = fileName;
@@ -257,8 +257,8 @@
             self.imageView.image = self.editImage;
         }
         [UIView animateWithDuration:0.3 animations:^{
-            self.imageView.frame = CGRectMake(20, 25, kWidth-40, kHeight-114-50);
-            self.tabBar.top = kHeight-114;
+            self.imageView.frame = CGRectMake(20, 25, kWidth-40, kHeight-kTopBarHeight-kBottomHeight-50);
+            self.tabBar.top = kHeight-kTopBarHeight-kBottomHeight;
             self.borderView.top = kHeight;
             self.editView.top = kHeight+100;
         } completion:^(BOOL finished) {
@@ -281,7 +281,7 @@
     if (!_tabBar) {
         NSArray *images = @[[UIImage imageNamed:@"pic_cut"],[UIImage imageNamed:@"pic_rotate"],[UIImage imageNamed:@"pic_border"],[UIImage imageNamed:@"pic_sketch"],[UIImage imageNamed:@"pic_revoke"]];
         NSArray *selectedImages = @[[UIImage imageNamed:@"pic_cut_h"],[UIImage imageNamed:@"pic_rotate_h"],[UIImage imageNamed:@"pic_border_h"],[UIImage imageNamed:@"pic_sketch_h"],[UIImage imageNamed:@"pic_revoke_h"]];
-        _tabBar = [[MMTabBar alloc] initWithFrame:CGRectMake(0, kHeight-114, kWidth, 50)
+        _tabBar = [[MMTabBar alloc] initWithFrame:CGRectMake(0, kHeight-kTopBarHeight-kBottomHeight, kWidth, kBottomHeight)
                                            titles:@[@"裁剪",@"旋转",@"边框",@"黑白",@"撤销"]
                                            images:images
                                      selectdColor:COLOR_MAIN
@@ -294,7 +294,7 @@
 - (UIImageView *)imageView
 {
     if (!_imageView) {
-        _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(20, 25, kWidth-40, kHeight-114-50)];
+        _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(20, 25, kWidth-40, kHeight-kTopBarHeight-kBottomHeight-50)];
         _imageView.backgroundColor = [UIColor clearColor];
         _imageView.clipsToBounds = YES;
         _imageView.contentMode = UIViewContentModeScaleAspectFit;
@@ -306,7 +306,7 @@
 - (MMEditView *)editView
 {
     if (!_editView) {
-        _editView = [[MMEditView alloc] initWithFrame:CGRectMake(0, kHeight, kWidth, 50)];
+        _editView = [[MMEditView alloc] initWithFrame:CGRectMake(0, kHeight, kWidth, kBottomHeight)];
         _editView.midImage = [UIImage imageNamed:@"pic_cut"];
         _editView.delegate = self;
     }

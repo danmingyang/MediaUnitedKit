@@ -24,18 +24,18 @@
     [super viewDidLoad];
     self.title = @"MUK"; //MUK = MediaUnitedKit
 
-    //加载各功能入口
-    //边距|间距
+    // 加载各功能入口
+    // 边距|间距
     CGFloat margin = 10.f;
-    //整体高度
-    CGFloat height = kHeight-64-50;
-    //按钮宽高
+    // 整体高度
+    CGFloat height = kHeight-kTopBarHeight-50;
+    // 按钮宽高
     CGFloat itemWidth = (kWidth-3*margin)/2,itemHieght = 0;
-    //记录坐标
+    // 记录坐标
     CGFloat itemX = 0,itemY = 20;
-    //背景颜色
+    // 背景颜色
     UIColor *bgColor = nil;
-    //标题
+    // 标题
     NSString *title = nil;
     for (int i = 0; i < 4; i ++) {
         if (i == 0) {

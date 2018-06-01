@@ -28,7 +28,7 @@
         
         //设置UI
         CGFloat w = self.width/itemNum;
-        CGFloat h = self.height;
+        CGFloat h = 50;
         UIImage *image = [images objectAtIndex:0];
         UIFont *font = [UIFont systemFontOfSize:10.0];
         CGFloat imageW = image.size.width;

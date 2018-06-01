@@ -9,15 +9,15 @@
 #import <UIKit/UIKit.h>
 
 typedef enum {
-    kOperateTypeCancel = 0,         //取消
-    kOperateTypeFinish,             //完成
+    kOperateTypeCancel = 0, // 取消
+    kOperateTypeFinish,     // 完成
 } OperateType;
 
 
 @protocol MMEditViewDelegate;
 @interface MMEditView : UIView
 
-//代理
+// 代理
 @property (nonatomic,assign) id<MMEditViewDelegate> delegate;
 @property (nonatomic,assign) UIImage *midImage;
 

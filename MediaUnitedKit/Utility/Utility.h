@@ -19,9 +19,9 @@
 + (NSString *)getHMSFormatBySeconds:(int)seconds;
 
 #pragma mark - 时间戳与日期的相互转换
-//时间戳转日期
+// 时间戳转日期
 + (NSString *)getDateByTimestamp:(long long)timestamp type:(NSInteger)timeType;
-//日期转时间戳
+// 日期转时间戳
 + (NSInteger)getTimestampByDate:(NSString *)dateString type:(NSInteger)timeType;
 
 #pragma mark - 文件路径

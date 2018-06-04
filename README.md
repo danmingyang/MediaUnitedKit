@@ -124,10 +124,10 @@ AVPlayer *audioPlayer = [[AVPlayer alloc] initWithPlayerItem:playerItem];
 
 ### 图库
 
-自定义的图片选择器[MMImagePicker](https://github.com/CheeryLau/MMImagePicker)，使用`AssetsLibrary`框架，同时集成了图片的预览和固定形状的裁剪。
+自定义的图片选择器[MMPhotoPicker](https://github.com/CheeryLau/MMPhotoPicker)，使用`Photos`框架，同时集成了图片的预览和固定形状的裁剪。
 
-## END
+## 后记
 
-如有问题，欢迎给我[留言](https://github.com/CheeryLau/MediaUnitedKit/issues)，如果这个工具对你有些帮助，请给我一个star、watch。O(∩_∩)O谢谢
+如有问题，欢迎给我[留言](https://github.com/CheeryLau/MediaUnitedKit/issues)，如果这个工具对你有些帮助，请给我一个star。O(∩_∩)O谢谢
 
 

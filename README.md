@@ -128,14 +128,14 @@ AVPlayer *audioPlayer = [[AVPlayer alloc] initWithPlayerItem:playerItem];
 
 ## 后记
 
-如有问题，欢迎给我[留言](https://github.com/CheeryLau/MediaUnitedKit/issues)，如果这个工具对你有些帮助，请给我一个star。O(∩_∩)O谢谢
+如有问题，欢迎给我[留言](https://github.com/CheeryLau/MediaUnitedKit/issues)，如果这个工具对你有些帮助，请给我一个star，谢谢。😘😘😘😘
 
 💡 💡 💡 
 欢迎访问我的[主页](https://github.com/CheeryLau)，希望以下工具也会对你有帮助。
 
-1、类似滴滴出行侧滑抽屉效果：[MMSideslipDrawer](https://github.com/CheeryLau/MMSideslipDrawer)
+1、自定义视频采集/图像选择及编辑/音频录制及播放等：[MediaUnitedKit](https://github.com/CheeryLau/MediaUnitedKit)
 
-2、基础组合动画：[CAAnimationUtil](https://github.com/CheeryLau/CAAnimationUtil)
+2、类似滴滴出行侧滑抽屉效果：[MMSideslipDrawer](https://github.com/CheeryLau/MMSideslipDrawer)
 
 3、图片选择器基于AssetsLibrary框架：[MMImagePicker](https://github.com/CheeryLau/MMImagePicker)
 
@@ -152,4 +152,6 @@ AVPlayer *audioPlayer = [[AVPlayer alloc] initWithPlayerItem:playerItem];
 9、源生二维码扫描与制作：[MMScanner](https://github.com/CheeryLau/MMScanner)
 
 10、简化UIButton文字和图片对齐：[UUButton](https://github.com/CheeryLau/UUButton)
+
+11、基础组合动画：[CAAnimationUtil](https://github.com/CheeryLau/CAAnimationUtil)
 

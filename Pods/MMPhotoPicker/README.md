@@ -35,7 +35,7 @@ MMPhotoPickerController属性介绍：
 @property (nonatomic, assign) id<MMPhotoPickerDelegate> delegate;
 ```
 
-### 代理
+## 代理
 
 ```objc
 @protocol MMPhotoPickerDelegate <NSObject>
@@ -59,7 +59,7 @@ MMPhotoPickerController属性介绍：
 
 ```
   
-### 使用
+## 使用
 
 1. `pod "MMPhotoPicker"` ;
 2. `pod install` / `pod update`;
@@ -90,7 +90,7 @@ UINavigationController *mmNav = [[UINavigationController alloc] initWithRootView
 }
 ```
 
-### 保存视频/图片到自定义相册
+## 保存视频/图片到自定义相册
 
 ```objc
 MMPhotoUtil类中：
@@ -110,5 +110,7 @@ MMPhotoUtil类中：
 
 ## 后记
 
-如有问题，欢迎给我[留言](https://github.com/CheeryLau/MMPhotoPicker/issues)，如果这个工具对你有些帮助，请给我一个star、watch。O(∩_∩)O谢谢
+不定时更新，如有问题欢迎给我[留言](https://github.com/CheeryLau/MMPhotoPicker/issues)，我会及时回复。如果这个工具对你有一些帮助，请给我一个star，谢谢。
+
+
 

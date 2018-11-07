@@ -10,12 +10,12 @@
 
 @interface UIImage (Category)
 
-#pragma mark - 图片素描处理
+#pragma mark - 图片黑白处理
 
 /**
- 图像素描处理
+ 图像黑白处理
 
- @return 素描
+ @return 黑白后的图片
  */
 - (UIImage *)sketchImage;
 

@@ -2,9 +2,8 @@
 
 MediaUnitedKit集成了自定义【视频+图像】采集、【视频+图片】保存到自定义相册、图片编辑【不规则裁剪、旋转、加框、黑白、撤销】、自定义图片选择器、音频的录制+播放【支持本地和网络音频播放】。
 
-![Screenshot](https://github.com/CheeryLau/MediaUnitedKit/blob/master/Screenshot/capture.png)
+![Screenshot](https://github.com/CheeryLau/MediaUnitedKit/blob/master/Screenshot/screenshot.gif)
 ![Screenshot](https://github.com/CheeryLau/MediaUnitedKit/blob/master/Screenshot/editor.png)
-![Screenshot](https://github.com/CheeryLau/MediaUnitedKit/blob/master/Screenshot/audio.png)
 ![Screenshot](https://github.com/CheeryLau/MediaUnitedKit/blob/master/Screenshot/gallery.png)
 
 ## 代码结构
@@ -39,11 +38,11 @@ AVPlayer *audioPlayer = [[AVPlayer alloc] initWithPlayerItem:playerItem];
 
 ### 图片编辑
 
-1、裁剪
+**1、裁剪**
 
 `MMImageClipper`实现图片的不规则裁剪，我参考的是在code4app下载的，GitHub上的貌似更好一些：[链接](https://github.com/jberlana/JBCroppableView)。
 
-2、旋转
+**2、旋转**
 
 旋转就是每次旋转90度，这里需要注意一点是，需要把角度转化成弧度：
 
@@ -74,7 +73,7 @@ AVPlayer *audioPlayer = [[AVPlayer alloc] initWithPlayerItem:playerItem];
 }
 ```
 
-3、加框
+**3、加框**
 
 这个就是图片合成了，需要注意的是图片的形状是各种各样的，所以要针对所编辑图片的size对边框图片做拉伸处理，为防止边框变形，要选非边框位置的某一像素点拉伸，具体试下入下：
 
@@ -99,7 +98,7 @@ AVPlayer *audioPlayer = [[AVPlayer alloc] initWithPlayerItem:playerItem];
 }
 ```
 
-4、黑白
+**4、黑白**
 
 使用强大的框架：[GPUImage](https://github.com/BradLarson/GPUImage)。使用方式详见`UIImage+Category`类下的`sketchImage`方法。
 
@@ -118,7 +117,7 @@ AVPlayer *audioPlayer = [[AVPlayer alloc] initWithPlayerItem:playerItem];
 }
 ```
 
-5、撤销
+**5、撤销**
 
 使用数据库存储，数据ID可代表顺序。
 

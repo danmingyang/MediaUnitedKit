@@ -57,6 +57,7 @@
     // 获得输入设备
     captureDevice = [self getCameraDeviceWithPosition:AVCaptureDevicePositionBack];
     if (!captureDevice) {
+        [self backAction];
         return;
     }
     if ([captureDevice lockForConfiguration:&error]) {
@@ -73,12 +74,14 @@
     }
     AVCaptureDeviceInput *captureDeviceInput = [[AVCaptureDeviceInput alloc] initWithDevice:captureDevice error:&error];
     if (error) {
+        [self backAction];
         return;
     }
     // 添加一个音频输入设备
     AVCaptureDevice *audioCaptureDevice = [[AVCaptureDevice devicesWithMediaType:AVMediaTypeAudio] firstObject];
     AVCaptureDeviceInput *audioCaptureDeviceInput = [[AVCaptureDeviceInput alloc]initWithDevice:audioCaptureDevice error:&error];
     if (error) {
+        [self backAction];
         return;
     }
     // 将设备输入添加到会话中
@@ -165,15 +168,15 @@
     double y = deviceMotion.gravity.y;
     if (fabs(y) >= fabs(x)) {
         if (y >= 0){
-            self.orientation  = AVCaptureVideoOrientationPortraitUpsideDown;
+            self.orientation = AVCaptureVideoOrientationPortraitUpsideDown;
         } else {
-            self.orientation  = AVCaptureVideoOrientationPortrait;
+            self.orientation = AVCaptureVideoOrientationPortrait;
         }
     } else {
         if (x >= 0){
-            self.orientation  = AVCaptureVideoOrientationLandscapeLeft;
+            self.orientation = AVCaptureVideoOrientationLandscapeLeft;
         } else {
-            self.orientation  = AVCaptureVideoOrientationLandscapeRight;
+            self.orientation = AVCaptureVideoOrientationLandscapeRight;
         }
     }
 }
@@ -270,7 +273,8 @@
 // 录制视频
 - (void)captureVideo:(UIButton *)btn
 {
-    if (self.videoBtn.selected) {
+    if (self.videoBtn.selected)
+    {
         self.videoBtn.selected = NO;
         // 录制完成
         [self.movieFileOutput stopRecording];
@@ -284,7 +288,9 @@
         self.timeLabel.text = @"00:00:00";
         self.dotImageView.hidden = YES;
         self.switchBtn.userInteractionEnabled = YES;
-    } else {
+    }
+    else
+    {
         self.videoBtn.selected = YES;
         // 开始录制
         AVCaptureConnection *videoConnection = nil;
@@ -340,8 +346,7 @@
     }
     AVCaptureConnection *captureConnection = [self.imageOutput connectionWithMediaType:AVMediaTypeVideo];
     [captureConnection setVideoScaleAndCropFactor:scaleNum];
-    [self.imageOutput captureStillImageAsynchronouslyFromConnection:captureConnection
-                                                  completionHandler:^(CMSampleBufferRef imageDataSampleBuffer, NSError *error)
+    [self.imageOutput captureStillImageAsynchronouslyFromConnection:captureConnection completionHandler:^(CMSampleBufferRef imageDataSampleBuffer, NSError *error)
      {
          NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
          UIImage *image = [[UIImage alloc] initWithData:imageData];
@@ -632,7 +637,6 @@
     return _flashView;
 }
 
-
 - (UILabel *)timeLabel
 {
     if (!_timeLabel) {
@@ -738,5 +742,6 @@
     [_motionManager stopDeviceMotionUpdates];
     _motionManager = nil;
 }
+
 @end
 

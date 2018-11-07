@@ -5,6 +5,8 @@
 //  Created by LEA on 2017/7/13.
 //  Copyright © 2017年 LEA. All rights reserved.
 //
+//  图片裁剪
+//
 
 #import <UIKit/UIKit.h>
 

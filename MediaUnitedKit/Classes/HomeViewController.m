@@ -24,46 +24,35 @@
     [super viewDidLoad];
     self.title = @"MUK"; //MUK = MediaUnitedKit
 
-    // 加载各功能入口
+    // 加载各功能入口↓↓
     // 边距|间距
     CGFloat margin = 10.f;
     // 整体高度
     CGFloat height = kHeight-kTopBarHeight-50;
     // 按钮宽高
-    CGFloat itemWidth = (kWidth-3*margin)/2,itemHieght = 0;
-    // 记录坐标
-    CGFloat itemX = 0,itemY = 20;
+    CGFloat itemWidth = kWidth-2*margin;
+    CGFloat itemHeight = (height-3*margin)/4;
     // 背景颜色
     UIColor *bgColor = nil;
     // 标题
     NSString *title = nil;
-    for (int i = 0; i < 4; i ++) {
+    for (int i = 0; i < 4; i ++)
+    {
         if (i == 0) {
-            itemX = margin;
-            itemY = 20;
-            itemHieght = height*2/3;
             title = @"拍摄";
             bgColor = RGBColor(255.0, 115.0, 152.0, 1.0);
         } else if (i == 1){
-            itemX = 2*margin+itemWidth;
-            itemY = 20;
-            itemHieght = height/3;
             title = @"图片编辑";
             bgColor = RGBColor(255.0, 183.0, 59.0, 1.0);
         } else if (i == 2){
-            itemX = margin;
-            itemY = 20+margin+height*2/3;
-            itemHieght = height/3;
             title = @"图库";
             bgColor = RGBColor(105.0, 215.0, 233.0, 1.0);
         } else {
-            itemX = 2*margin+itemWidth;
-            itemY = 20+margin+height/3;
-            itemHieght = height*2/3;
             title = @"音频采集播放";
             bgColor = RGBColor(129.0, 149.0, 253.0, 1.0);
         }
-        UIView *itemView = [[UIView alloc] initWithFrame:CGRectMake(itemX, itemY, itemWidth, itemHieght)];
+        
+        UIView *itemView = [[UIView alloc] initWithFrame:CGRectMake(margin,25+(itemHeight+margin)*i,itemWidth,itemHeight)];
         itemView.tag = 100+i;
         itemView.backgroundColor = bgColor;
         itemView.layer.masksToBounds = YES;
@@ -71,10 +60,10 @@
         [self.view addSubview:itemView];
         
         UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"home_%d",i]]];
-        imageView.origin = CGPointMake(0, itemHieght-imageView.height-40);
+        imageView.origin = CGPointMake(10, itemHeight-imageView.height-40);
         [itemView addSubview:imageView];
         
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, itemHieght-50, itemWidth-20, 50)];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, itemHeight-50, itemWidth-30, 50)];
         label.text = title;
         label.textColor = [UIColor whiteColor];
         label.font = [UIFont boldSystemFontOfSize:16.0];
@@ -92,26 +81,26 @@
     NSInteger index = clickView.tag-100;
     switch (index)
     {
-        case 0: //拍摄
+        case 0: // 视频拍摄
         {
             MediaCaptureController *controller = [[MediaCaptureController alloc] init];
             BaseNavigationController *navController = [[BaseNavigationController alloc] initWithRootViewController:controller];
             [self presentViewController:navController animated:YES completion:nil];
             break;
         }
-        case 1: //图片编辑
+        case 1: // 图片编辑
         {
             EditorViewController *controller = [[EditorViewController alloc] init];
             [self.navigationController pushViewController:controller animated:YES];
             break;
         }
-        case 2: //图库
+        case 2: // 图库
         {
             GalleryViewController *controller = [[GalleryViewController alloc] init];
             [self.navigationController pushViewController:controller animated:YES];
             break;
         }
-        case 3: //音频采集播放
+        case 3: // 音频采集播放
         {
             RecorderViewController *controller = [[RecorderViewController alloc] init];
             [controller setMp3FileNameBlock:^(NSString *mp3FileName) {

@@ -17,7 +17,7 @@
 
 @implementation UIImage (Category)
 
-#pragma mark - 图片素描处理
+#pragma mark - 图片黑白处理
 - (UIImage *)sketchImage
 {
     UIImage *image = [Utility fixOrientation:self];

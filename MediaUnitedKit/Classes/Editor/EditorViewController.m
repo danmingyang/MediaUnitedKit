@@ -112,7 +112,7 @@
             [self showBorderEditView];
             break;
         }
-        case 3: // 素描化
+        case 3: // 黑白化
         {
             if (_photoModel.isSketch) {
                 return;

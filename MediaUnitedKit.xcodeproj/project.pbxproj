@@ -30,6 +30,10 @@
 		FA3A1FAB21F994EE002D9B6C /* NSString+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3A1F9421F994EE002D9B6C /* NSString+Category.m */; };
 		FA3A1FAC21F994EE002D9B6C /* JKDBModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3A1F9721F994EE002D9B6C /* JKDBModel.m */; };
 		FA3A1FAD21F994EE002D9B6C /* JKDBHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3A1F9821F994EE002D9B6C /* JKDBHelper.m */; };
+		FA3A1FB321F997E2002D9B6C /* gallery.png in Resources */ = {isa = PBXBuildFile; fileRef = FA3A1FAF21F997E2002D9B6C /* gallery.png */; };
+		FA3A1FB421F997E2002D9B6C /* editor.png in Resources */ = {isa = PBXBuildFile; fileRef = FA3A1FB021F997E2002D9B6C /* editor.png */; };
+		FA3A1FB521F997E2002D9B6C /* screenshot.gif in Resources */ = {isa = PBXBuildFile; fileRef = FA3A1FB121F997E2002D9B6C /* screenshot.gif */; };
+		FA3A1FB621F997E2002D9B6C /* framework.png in Resources */ = {isa = PBXBuildFile; fileRef = FA3A1FB221F997E2002D9B6C /* framework.png */; };
 		FD5715F18CDD45BC776DA2AD /* libPods-MediaUnitedKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A90E832BAF66F361C8A73EA8 /* libPods-MediaUnitedKit.a */; };
 /* End PBXBuildFile section */
 
@@ -81,6 +85,10 @@
 		FA3A1F9921F994EE002D9B6C /* JKDBModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKDBModel.h; sourceTree = "<group>"; };
 		FA3A1F9A21F994EE002D9B6C /* JKDBHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKDBHelper.h; sourceTree = "<group>"; };
 		FA3A1F9B21F994EE002D9B6C /* UIImage+Editor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Editor.h"; sourceTree = "<group>"; };
+		FA3A1FAF21F997E2002D9B6C /* gallery.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gallery.png; sourceTree = "<group>"; };
+		FA3A1FB021F997E2002D9B6C /* editor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = editor.png; sourceTree = "<group>"; };
+		FA3A1FB121F997E2002D9B6C /* screenshot.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = screenshot.gif; sourceTree = "<group>"; };
+		FA3A1FB221F997E2002D9B6C /* framework.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = framework.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +124,7 @@
 		8BAC016A1F73BBE9006A582C /* MediaUnitedKit */ = {
 			isa = PBXGroup;
 			children = (
+				FA3A1FAE21F997E2002D9B6C /* Screenshot */,
 				FA3A1F9021F994EE002D9B6C /* Utility */,
 				FA3A1F7221F994EE002D9B6C /* UnitTool */,
 				FA3A1F7021F994EE002D9B6C /* BaseNavigationController.h */,
@@ -268,6 +277,17 @@
 			path = JKDB;
 			sourceTree = "<group>";
 		};
+		FA3A1FAE21F997E2002D9B6C /* Screenshot */ = {
+			isa = PBXGroup;
+			children = (
+				FA3A1FAF21F997E2002D9B6C /* gallery.png */,
+				FA3A1FB021F997E2002D9B6C /* editor.png */,
+				FA3A1FB121F997E2002D9B6C /* screenshot.gif */,
+				FA3A1FB221F997E2002D9B6C /* framework.png */,
+			);
+			path = Screenshot;
+			sourceTree = SOURCE_ROOT;
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -330,9 +350,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA3A1FB621F997E2002D9B6C /* framework.png in Resources */,
+				FA3A1FB521F997E2002D9B6C /* screenshot.gif in Resources */,
 				8BAC017B1F73BBE9006A582C /* LaunchScreen.storyboard in Resources */,
 				8BD025D61F73BC9A00B8796F /* UnitedKit-Info.plist in Resources */,
+				FA3A1FB321F997E2002D9B6C /* gallery.png in Resources */,
 				8BAC01781F73BBE9006A582C /* Assets.xcassets in Resources */,
+				FA3A1FB421F997E2002D9B6C /* editor.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

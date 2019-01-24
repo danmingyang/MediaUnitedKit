@@ -46,15 +46,17 @@ AVPlayer *audioPlayer = [[AVPlayer alloc] initWithPlayerItem:playerItem];
 
 ### 图片编辑
 
-**裁剪：**`MMImageClipper`实现图片的不规则裁剪，参考[链接](https://github.com/jberlana/JBCroppableView)。
 
-**旋转：**旋转就是每次旋转90度，每旋转一次存储一张图片和一个标记Model。
+**裁剪：** `MMImageClipper`实现图片的不规则裁剪，参考[链接](https://github.com/jberlana/JBCroppableView)。
 
-**加框：**即图片合成，需要注意的是图片的形状是各种各样的，所以要针对所编辑图片的size对边框图片做拉伸处理，为防止边框变形，要选非边框位置的某一像素点拉伸。
+**旋转：** 旋转就是每次旋转90度，每旋转一次存储一张图片和一个标记Model。
 
-**黑白：**使用开源框架：[GPUImage](https://github.com/BradLarson/GPUImage)。
+**加框：** 即图片合成，需要注意的是图片的形状是各种各样的，所以要针对所编辑图片的size对边框图片做拉伸处理，为防止边框变形，要选非边框位置的某一像素点拉伸。
 
-**撤销：**使用数据库存储，数据ID代表顺序，没撤销一次删除一个标记和一张图片。
+**黑白：** 使用开源框架：[GPUImage](https://github.com/BradLarson/GPUImage)。
+
+**撤销：** 使用数据库存储，数据ID代表顺序，没撤销一次删除一个标记和一张图片。
+
 
 ### 图库
 

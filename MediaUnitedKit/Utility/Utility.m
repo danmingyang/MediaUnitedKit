@@ -5,8 +5,8 @@
 //  Created by LEA on 2017/9/21.
 //  Copyright © 2017年 LEA. All rights reserved.
 //
-static NSString *kAssetsGroup = @"MUK";
-#define ORIGINAL_MAX_WIDTH 640.0f
+
+static NSString * kAssetsGroup = @"MUK";
 
 @implementation Utility
 
@@ -20,14 +20,6 @@ static NSString *kAssetsGroup = @"MUK";
     return (int)Timestamp;
 }
 
-// 获取当前时间的时间戳(毫秒)
-+ (long long)getNowTimestampMesc
-{
-    NSDate *date = [NSDate date];
-    long long timeInterval = [date timeIntervalSince1970] * 1000;
-    return timeInterval;
-}
-
 // 获取当前时间的时间戳字符串(秒)
 + (NSString *)getNowTimestampString
 {
@@ -35,6 +27,7 @@ static NSString *kAssetsGroup = @"MUK";
     return timeString;
 }
 
+// 获取时分秒
 + (NSString *)getHMSFormatBySeconds:(int)seconds
 {
     NSString *hour = [NSString stringWithFormat:@"%02d",seconds/3600];
@@ -44,7 +37,6 @@ static NSString *kAssetsGroup = @"MUK";
     return hmsFormat;
 }
 
-#pragma mark - 时间戳与日期的相互转换
 // 时间戳转日期
 + (NSString *)getDateByTimestamp:(long long)timestamp type:(NSInteger)timeType
 {
@@ -227,19 +219,19 @@ static NSString *kAssetsGroup = @"MUK";
         default:
             break;
     }
-    NSTimeZone* timeZone = [NSTimeZone timeZoneWithName:@"Asia/Shanghai"];
+    NSTimeZone * timeZone = [NSTimeZone timeZoneWithName:@"Asia/Shanghai"];
     [dateFormatter setTimeZone:timeZone];
-    NSDate *date = [dateFormatter dateFromString:dateString];
+    NSDate * date = [dateFormatter dateFromString:dateString];
     NSTimeInterval a = [date timeIntervalSince1970];
-    NSInteger Timestamp = a;
-    return Timestamp;
+    NSInteger timestamp = a;
+    return timestamp;
 }
 
 #pragma mark - 文件、路劲
 // doc路径
 +( NSString *)getDocDir
 {
-    NSArray *searchPaths =NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSArray *searchPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentPath = [searchPaths objectAtIndex:0];
     return documentPath;
 }
@@ -291,7 +283,7 @@ static NSString *kAssetsGroup = @"MUK";
     AVURLAsset *urlAsset = [AVURLAsset URLAssetWithURL:videoURL options:opts];
     AVAssetImageGenerator *generator = [AVAssetImageGenerator assetImageGeneratorWithAsset:urlAsset];
     generator.appliesPreferredTrackTransform = YES;
-    generator.maximumSize = CGSizeMake(kHeight, kHeight);
+    generator.maximumSize = CGSizeMake(kScreenHeight, kScreenHeight);
     NSError *error = nil;
     CGImageRef img = [generator copyCGImageAtTime:CMTimeMake(10, 10) actualTime:NULL error:&error];
     UIImage *image = [UIImage imageWithCGImage: img];
@@ -568,15 +560,15 @@ static NSString *kAssetsGroup = @"MUK";
 
 + (UIImage *)imageByScalingToMaxSize:(UIImage *)sourceImage
 {
-    if (sourceImage.size.width < ORIGINAL_MAX_WIDTH) return sourceImage;
+    if (sourceImage.size.width < kScreenWidth) return sourceImage;
     CGFloat btWidth = 0.0f;
     CGFloat btHeight = 0.0f;
     if (sourceImage.size.width > sourceImage.size.height) {
-        btHeight = ORIGINAL_MAX_WIDTH;
-        btWidth = sourceImage.size.width * (ORIGINAL_MAX_WIDTH / sourceImage.size.height);
+        btHeight = kScreenWidth;
+        btWidth = sourceImage.size.width * (kScreenWidth / sourceImage.size.height);
     } else {
-        btWidth = ORIGINAL_MAX_WIDTH;
-        btHeight = sourceImage.size.height * (ORIGINAL_MAX_WIDTH / sourceImage.size.width);
+        btWidth = kScreenWidth;
+        btHeight = sourceImage.size.height * (kScreenWidth / sourceImage.size.width);
     }
     CGSize targetSize = CGSizeMake(btWidth, btHeight);
     return [self imageByScalingAndCroppingForSourceImage:sourceImage targetSize:targetSize];

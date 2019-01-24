@@ -19,26 +19,25 @@
 
 @implementation AppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    //主控制器
-    HomeViewController *homeVC = [[HomeViewController alloc] init];
-    BaseNavigationController *homeNav = [[BaseNavigationController alloc] initWithRootViewController:homeVC];
-    //Window
+    // 主控制器
+    HomeViewController * controller = [[HomeViewController alloc] init];
+    BaseNavigationController * navigation = [[BaseNavigationController alloc] initWithRootViewController:controller];
+    // Window
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
-    self.window.rootViewController = homeNav;
+    self.window.rootViewController = navigation;
     [self.window makeKeyAndVisible];
     
-    //友盟统计(默认以设备[非用户]为标准,日志非加密)
-    [MobClick setAppVersion:kVersion];//获取应用版本号
-    UMConfigInstance.appKey = kUmAK;//appKey
-    [MobClick startWithConfigure:UMConfigInstance];//配置以上参数后调用此方法初始化SDK
+    // 友盟统计(默认以设备[非用户]为标准,日志非加密)
+    [MobClick setAppVersion:kVersion];// 获取应用版本号
+    UMConfigInstance.appKey = kUmAK;// appKey
+    [MobClick startWithConfigure:UMConfigInstance];// 配置以上参数后调用此方法初始化SDK
 #if DEBUG
-    [MobClick setLogEnabled:YES];//调试模式,输出log信息
+    [MobClick setLogEnabled:YES];// 调试模式,输出log信息
 #else
-    [MobClick setLogEnabled:NO];//发布模式,不输出log信息
+    [MobClick setLogEnabled:NO];// 发布模式,不输出log信息
 #endif
     // 滚动视图设置
     if (@available(iOS 11.0, *)) {

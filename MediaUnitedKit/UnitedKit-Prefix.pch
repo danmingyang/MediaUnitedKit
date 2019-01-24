@@ -11,7 +11,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "BaseNavigationController.h"
 #import "NSString+Category.h"
-#import "UIImage+Category.h"
+#import "UIImage+Editor.h"
 #import "MMTabBar.h"
 #import "Utility.h"
 #import <MMPhotoPickerConst.h>
@@ -23,13 +23,8 @@
 #define DLog(fmt, ...) nil
 #endif
 // 设备的物理尺寸
-#define kWidth                  [UIScreen mainScreen].bounds.size.width
-#define kHeight                 [UIScreen mainScreen].bounds.size.height
-// 背景色
-#define VIEW_BGCOLOR            RGBColor(242, 242, 245, 1.0)
+#define kScreenWidth            [UIScreen mainScreen].bounds.size.width
+#define kScreenHeight           [UIScreen mainScreen].bounds.size.height
 // 主色调
-#define COLOR_MAIN              RGBColor(48, 191, 190, 1.0)
-// 点击后的颜色
-#define COLOR_MAIN_CLICK        RGBColor(25, 150, 150, 1.0)
-// 表格边线
-#define TABLEVIEW_BORDER_COLOR  RGBColor(224, 224, 224, 1.0)
+#define kUnitMainColor          RGBColor(48, 191, 190, 1.0)
+#define kUnitUnableColor        RGBColor(235, 241, 245, 1.0)

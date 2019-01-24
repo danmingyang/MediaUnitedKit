@@ -11,15 +11,15 @@
 
 @implementation NSString (Category)
 
-#pragma mark - 获取文本size
+// 计算文本占用的宽高
 - (CGSize)sizeWithFont:(UIFont *)font maxSize:(CGSize)maxSize
 {
-    NSDictionary *dict = @{NSFontAttributeName: font};
-    CGSize textSize = [self boundingRectWithSize:maxSize
-                                         options:NSStringDrawingUsesLineFragmentOrigin
-                                      attributes:dict
-                                         context:nil].size;
-    return textSize;
+    NSDictionary * attributes = @{NSFontAttributeName:font};
+    CGSize size = [self boundingRectWithSize:maxSize
+                                     options:NSStringDrawingUsesLineFragmentOrigin
+                                  attributes:attributes
+                                     context:nil].size;
+    return size;
 }
 
 @end

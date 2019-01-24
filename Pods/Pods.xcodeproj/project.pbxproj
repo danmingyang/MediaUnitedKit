@@ -517,7 +517,7 @@
 		31D4F5A2F427AE4F58B092DD11D22A00 /* MMPhotoPickerConst.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MMPhotoPickerConst.h; path = MMPhotoPicker/MMPhotoPickerConst.h; sourceTree = "<group>"; };
 		31F883637B0F61DF453A9B5AAFEE9614 /* GPUImageMultiplyBlendFilter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GPUImageMultiplyBlendFilter.h; path = framework/Source/GPUImageMultiplyBlendFilter.h; sourceTree = "<group>"; };
 		3228A0C53EAB234F8FC99DEC094F3D8B /* GPUImageLuminanceRangeFilter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GPUImageLuminanceRangeFilter.m; path = framework/Source/GPUImageLuminanceRangeFilter.m; sourceTree = "<group>"; };
-		32729CBAB919C0110A0CD6FE2FA46E37 /* libMMPhotoPicker.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMMPhotoPicker.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		32729CBAB919C0110A0CD6FE2FA46E37 /* libMMPhotoPicker.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libMMPhotoPicker.a; path = libMMPhotoPicker.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		32C7E1A5E1C9E511C3869D3C87543BA2 /* GPUImageDissolveBlendFilter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GPUImageDissolveBlendFilter.h; path = framework/Source/GPUImageDissolveBlendFilter.h; sourceTree = "<group>"; };
 		34333A368BF962220D0C6EF9E8C8FAFE /* GPUImageMaskFilter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GPUImageMaskFilter.h; path = framework/Source/GPUImageMaskFilter.h; sourceTree = "<group>"; };
 		34890D9DFBCFF4732A6D76149E61D2D0 /* GPUImageLookupFilter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GPUImageLookupFilter.m; path = framework/Source/GPUImageLookupFilter.m; sourceTree = "<group>"; };
@@ -544,7 +544,7 @@
 		3FBA82B5CA1BFE5B36A562871852B344 /* GPUImageLocalBinaryPatternFilter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GPUImageLocalBinaryPatternFilter.m; path = framework/Source/GPUImageLocalBinaryPatternFilter.m; sourceTree = "<group>"; };
 		4018ABB1B1503227DEFF083E216B552A /* GPUImageErosionFilter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GPUImageErosionFilter.m; path = framework/Source/GPUImageErosionFilter.m; sourceTree = "<group>"; };
 		40850E1EE8A39022F760FE44F32F83A7 /* GPUImageHardLightBlendFilter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GPUImageHardLightBlendFilter.h; path = framework/Source/GPUImageHardLightBlendFilter.h; sourceTree = "<group>"; };
-		432239842902D033463310FCD4208287 /* libGPUImage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libGPUImage.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		432239842902D033463310FCD4208287 /* libGPUImage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libGPUImage.a; path = libGPUImage.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		4367368A3CC50BC479983E889B3F33DE /* GPUImagePolarPixellateFilter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GPUImagePolarPixellateFilter.m; path = framework/Source/GPUImagePolarPixellateFilter.m; sourceTree = "<group>"; };
 		44291B6E1355FABEBC818F9FF1A6B471 /* GPUImageToneCurveFilter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GPUImageToneCurveFilter.h; path = framework/Source/GPUImageToneCurveFilter.h; sourceTree = "<group>"; };
 		45E71F1361AC1438FAA1FCE3D86ADD85 /* GPUImageEmbossFilter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GPUImageEmbossFilter.m; path = framework/Source/GPUImageEmbossFilter.m; sourceTree = "<group>"; };
@@ -633,7 +633,7 @@
 		70F845413B629E08522F3C5DBDE23B4F /* GPUImageFilter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GPUImageFilter.m; path = framework/Source/GPUImageFilter.m; sourceTree = "<group>"; };
 		724E7A7C7ECD759EAF31F3792150029F /* FMDB.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FMDB.h; path = src/fmdb/FMDB.h; sourceTree = "<group>"; };
 		73EF020123ED539FF10D94DE9F8F7960 /* GPUImagePicture+TextureSubimage.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "GPUImagePicture+TextureSubimage.m"; path = "framework/Source/iOS/GPUImagePicture+TextureSubimage.m"; sourceTree = "<group>"; };
-		74B268CFFDAE3CFCBD21DFD76DC84979 /* libUUButton.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libUUButton.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		74B268CFFDAE3CFCBD21DFD76DC84979 /* libUUButton.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libUUButton.a; path = libUUButton.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		755E58695823293FDB15609643B36E23 /* GPUImageFramebufferCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GPUImageFramebufferCache.m; path = framework/Source/GPUImageFramebufferCache.m; sourceTree = "<group>"; };
 		755F2AD09FE76A1FA5443B5615C2EB0C /* GPUImageFramebuffer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GPUImageFramebuffer.m; path = framework/Source/GPUImageFramebuffer.m; sourceTree = "<group>"; };
 		7680B9E24A9C5934352B49785B0CBA89 /* GPUImageiOSBlurFilter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GPUImageiOSBlurFilter.h; path = framework/Source/GPUImageiOSBlurFilter.h; sourceTree = "<group>"; };
@@ -676,9 +676,9 @@
 		8EBA88709F283B8BE50789030FFF333C /* GPUImageMotionBlurFilter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GPUImageMotionBlurFilter.h; path = framework/Source/GPUImageMotionBlurFilter.h; sourceTree = "<group>"; };
 		8F494A52E3012E4196E878F421B48862 /* GPUImageNormalBlendFilter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GPUImageNormalBlendFilter.m; path = framework/Source/GPUImageNormalBlendFilter.m; sourceTree = "<group>"; };
 		932086F213E2A1A616EA13B494F14B95 /* GPUImagePicture+TextureSubimage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "GPUImagePicture+TextureSubimage.h"; path = "framework/Source/iOS/GPUImagePicture+TextureSubimage.h"; sourceTree = "<group>"; };
-		9369EE4406ED0948D96BB11E9710A7E0 /* libFMDB.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFMDB.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		9369EE4406ED0948D96BB11E9710A7E0 /* libFMDB.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libFMDB.a; path = libFMDB.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		93928069480A45F8D3E8F6C5A4E4D3F0 /* MMPhotoPreviewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MMPhotoPreviewController.h; path = MMPhotoPicker/MMPhotoPreviewController.h; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		941795C60A3BE759AC1AD61AE896FCA5 /* GPUImageJFAVoronoiFilter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GPUImageJFAVoronoiFilter.h; path = framework/Source/GPUImageJFAVoronoiFilter.h; sourceTree = "<group>"; };
 		945C5A6BC76E44B7FC51EF46DF373BC7 /* GPUImageToonFilter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GPUImageToonFilter.m; path = framework/Source/GPUImageToonFilter.m; sourceTree = "<group>"; };
 		94AFC331241587F6310783D2E6D7D0FF /* GPUImageFASTCornerDetectionFilter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GPUImageFASTCornerDetectionFilter.h; path = framework/Source/GPUImageFASTCornerDetectionFilter.h; sourceTree = "<group>"; };
@@ -756,7 +756,7 @@
 		BAD5410683CED9E94B3097E112B68FCF /* GPUImageBrightnessFilter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GPUImageBrightnessFilter.h; path = framework/Source/GPUImageBrightnessFilter.h; sourceTree = "<group>"; };
 		BC59E76A5F70A8CF78CCA98DC027F592 /* MMPhotoAssetController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MMPhotoAssetController.h; path = MMPhotoPicker/MMPhotoAssetController.h; sourceTree = "<group>"; };
 		BD0402C9C6925F16D6205152CA2FEE91 /* GPUImageLowPassFilter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GPUImageLowPassFilter.h; path = framework/Source/GPUImageLowPassFilter.h; sourceTree = "<group>"; };
-		BD1A1083D176910A3FDA7CAFBD156EBC /* libPods-MediaUnitedKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MediaUnitedKit.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD1A1083D176910A3FDA7CAFBD156EBC /* libPods-MediaUnitedKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-MediaUnitedKit.a"; path = "libPods-MediaUnitedKit.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD2450D148CF79512496DFB3ED603911 /* GPUImageNonMaximumSuppressionFilter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GPUImageNonMaximumSuppressionFilter.h; path = framework/Source/GPUImageNonMaximumSuppressionFilter.h; sourceTree = "<group>"; };
 		BDAC18FB1CE4DB7523166D72C24586DB /* GPUImageSepiaFilter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GPUImageSepiaFilter.h; path = framework/Source/GPUImageSepiaFilter.h; sourceTree = "<group>"; };
 		BE27E96B879E2554EEE62AA57E25A6A5 /* GPUImageGaussianBlurFilter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GPUImageGaussianBlurFilter.m; path = framework/Source/GPUImageGaussianBlurFilter.m; sourceTree = "<group>"; };
@@ -862,7 +862,7 @@
 		F90D810601FEDF77E22A337CFBB3BF71 /* GPUImageColorInvertFilter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GPUImageColorInvertFilter.m; path = framework/Source/GPUImageColorInvertFilter.m; sourceTree = "<group>"; };
 		F92B0B175D4137D7956E9B7502E9E0D9 /* GPUImageHistogramGenerator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GPUImageHistogramGenerator.m; path = framework/Source/GPUImageHistogramGenerator.m; sourceTree = "<group>"; };
 		F93BD3EFD2D8E1B8EB02BEADBD4A92B9 /* GPUImageMonochromeFilter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GPUImageMonochromeFilter.h; path = framework/Source/GPUImageMonochromeFilter.h; sourceTree = "<group>"; };
-		F942BFF40CF8BC5CBF0CBEA0B615EA91 /* libMasonry.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMasonry.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		F942BFF40CF8BC5CBF0CBEA0B615EA91 /* libMasonry.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libMasonry.a; path = libMasonry.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB02ACBB563FD8340CCF770D214704B5 /* GPUImageLocalBinaryPatternFilter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GPUImageLocalBinaryPatternFilter.h; path = framework/Source/GPUImageLocalBinaryPatternFilter.h; sourceTree = "<group>"; };
 		FB1D133F2C6330669996B3D825763554 /* GPUImagePicture.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GPUImagePicture.h; path = framework/Source/iOS/GPUImagePicture.h; sourceTree = "<group>"; };
 		FB491F9135EB3B871029DAA89CA85D73 /* GPUImageOpacityFilter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GPUImageOpacityFilter.m; path = framework/Source/GPUImageOpacityFilter.m; sourceTree = "<group>"; };
@@ -1274,6 +1274,7 @@
 				5CBAF296FB17DCFF81CBFFEB0C73499A /* Resources */,
 				182D06D01DE024143936F310F7494D85 /* Support Files */,
 			);
+			name = GPUImage;
 			path = GPUImage;
 			sourceTree = "<group>";
 		};
@@ -1304,6 +1305,7 @@
 				795D77D4EC0E46F681F9FFE75EC85199 /* Resources */,
 				52A856BAD297F786D07CFDBFD99FDD80 /* Support Files */,
 			);
+			name = MMPhotoPicker;
 			path = MMPhotoPicker;
 			sourceTree = "<group>";
 		};
@@ -1346,6 +1348,7 @@
 				80CDEB31C42F87D3EC746094670992F7 /* standard */,
 				19DE323E41C69B92F48B63BCD3B1F5DA /* Support Files */,
 			);
+			name = FMDB;
 			path = FMDB;
 			sourceTree = "<group>";
 		};
@@ -1390,6 +1393,7 @@
 				7D6A9209287FB94B240E600E9C181766 /* ViewController+MASAdditions.m */,
 				26C1F2226077A449989D1061C179B56E /* Support Files */,
 			);
+			name = Masonry;
 			path = Masonry;
 			sourceTree = "<group>";
 		};
@@ -1479,6 +1483,7 @@
 			children = (
 				02D94A97B2BAD9C52A0CDD14FBDB0922 /* Frameworks */,
 			);
+			name = "UMengAnalytics-NO-IDFA";
 			path = "UMengAnalytics-NO-IDFA";
 			sourceTree = "<group>";
 		};
@@ -1487,6 +1492,7 @@
 			children = (
 				0BFC28C5F2FBAB2C64B282B50E785EB7 /* Frameworks */,
 			);
+			name = "mp3lame-for-ios";
 			path = "mp3lame-for-ios";
 			sourceTree = "<group>";
 		};
@@ -1540,6 +1546,7 @@
 				4ECCC637F0AD25592EEA985222889490 /* UUButton.m */,
 				74DF886D6B34203572C646BEEA563F25 /* Support Files */,
 			);
+			name = UUButton;
 			path = UUButton;
 			sourceTree = "<group>";
 		};
@@ -2203,7 +2210,27 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		1D3F48869EA6A0024D621535B6BC77C9 /* Debug */ = {
+		058E827C1A5C2BC3D4807B11F96EC578 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7C3F11C90BE5AA2ACEAF13FC372042BD /* Pods-MediaUnitedKit.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		153B48D99DFFB2B89EB051FEA4680E1E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 956AEDBFD64F710A012482D3F5B22FE0 /* Masonry.xcconfig */;
 			buildSettings = {
@@ -2216,8 +2243,6 @@
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_MODULE_NAME = Masonry;
-				PRODUCT_NAME = Masonry;
 				PUBLIC_HEADERS_FOLDER_PATH = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -2226,101 +2251,7 @@
 			};
 			name = Debug;
 		};
-		21245A7F907129C5C123B1B3A8910F13 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = AA52C567C7529C7F4FD9F4776896EDDE /* UUButton.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				GCC_PREFIX_HEADER = "Target Support Files/UUButton/UUButton-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_MODULE_NAME = UUButton;
-				PRODUCT_NAME = UUButton;
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		2410F638A0CA9152C2BD78295F7D2609 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = AA52C567C7529C7F4FD9F4776896EDDE /* UUButton.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				GCC_PREFIX_HEADER = "Target Support Files/UUButton/UUButton-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_MODULE_NAME = UUButton;
-				PRODUCT_NAME = UUButton;
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		36333FE86427AF5CB6FECB4378EA1E30 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6D4FBA00588F81BB5E58844620EB4E85 /* GPUImage.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				GCC_PREFIX_HEADER = "Target Support Files/GPUImage/GPUImage-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_MODULE_NAME = GPUImage;
-				PRODUCT_NAME = GPUImage;
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		4E325306CC9676AE36768C29A7BF95BC /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 18DD2FA51B0566114A53E14705D5C7D3 /* FMDB.xcconfig */;
-			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				GCC_PREFIX_HEADER = "Target Support Files/FMDB/FMDB-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_MODULE_NAME = FMDB;
-				PRODUCT_NAME = FMDB;
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		74D381F96E50998D0D2C2BD57F4AC61D /* Debug */ = {
+		366E58450A1C99FDE37620F6CD1420FB /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6A7D3751650FC956A709ADCFDAE02689 /* MMPhotoPicker.xcconfig */;
 			buildSettings = {
@@ -2333,31 +2264,6 @@
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_MODULE_NAME = MMPhotoPicker;
-				PRODUCT_NAME = MMPhotoPicker;
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		7ABC5B0B41AE5AE4074048AD11BD4E30 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6D4FBA00588F81BB5E58844620EB4E85 /* GPUImage.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				GCC_PREFIX_HEADER = "Target Support Files/GPUImage/GPUImage-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_MODULE_NAME = GPUImage;
-				PRODUCT_NAME = GPUImage;
 				PUBLIC_HEADERS_FOLDER_PATH = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -2367,7 +2273,7 @@
 			};
 			name = Release;
 		};
-		85B95B1234E227C814CCC2C7902D0916 /* Release */ = {
+		4075BD435AE936C27BAFFDEE5605ECFE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -2399,7 +2305,6 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_REQUIRED = NO;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -2420,39 +2325,38 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 4.2;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Release;
 		};
-		87DAF503143353319F5F01B8408B157A /* Release */ = {
+		43A5CBFB39F1EBD25B8EECDEF1D58A2C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D9E372A932204A5DDC5B817D0ECB1C64 /* Pods-MediaUnitedKit.release.xcconfig */;
+			baseConfigurationReference = AA52C567C7529C7F4FD9F4776896EDDE /* UUButton.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				MACH_O_TYPE = staticlib;
+				GCC_PREFIX_HEADER = "Target Support Files/UUButton/UUButton-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
 			};
-			name = Release;
+			name = Debug;
 		};
-		A254A1D5CAE40ABC54B15E5215496D62 /* Release */ = {
+		670998B501DFFE8EC0CA1D48B6A9EA4F /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 956AEDBFD64F710A012482D3F5B22FE0 /* Masonry.xcconfig */;
 			buildSettings = {
@@ -2465,8 +2369,6 @@
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_MODULE_NAME = Masonry;
-				PRODUCT_NAME = Masonry;
 				PUBLIC_HEADERS_FOLDER_PATH = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -2476,22 +2378,19 @@
 			};
 			name = Release;
 		};
-		A5355117F36974A28246067DE3E6E734 /* Release */ = {
+		68D1550AB073528F24C46211463816CD /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 18DD2FA51B0566114A53E14705D5C7D3 /* FMDB.xcconfig */;
+			baseConfigurationReference = AA52C567C7529C7F4FD9F4776896EDDE /* UUButton.xcconfig */;
 			buildSettings = {
-				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				GCC_PREFIX_HEADER = "Target Support Files/FMDB/FMDB-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				GCC_PREFIX_HEADER = "Target Support Files/UUButton/UUButton-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_MODULE_NAME = FMDB;
-				PRODUCT_NAME = FMDB;
 				PUBLIC_HEADERS_FOLDER_PATH = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -2501,7 +2400,28 @@
 			};
 			name = Release;
 		};
-		A73625DEBD810B78234FA1958C191C8C /* Debug */ = {
+		6DE2AAC9F261B90D9AB0093FE6307B7A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6A7D3751650FC956A709ADCFDAE02689 /* MMPhotoPicker.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/MMPhotoPicker/MMPhotoPicker-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B76FD4F687484551839CB62D13331B5B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -2533,7 +2453,6 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_REQUIRED = NO;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -2557,9 +2476,9 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
 				STRIP_INSTALLED_PRODUCT = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -2568,21 +2487,62 @@
 			};
 			name = Debug;
 		};
-		B21D9F75531E75BABC7DAF022AFC154D /* Release */ = {
+		C6C29A598A4F4086514262A7B342B350 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6A7D3751650FC956A709ADCFDAE02689 /* MMPhotoPicker.xcconfig */;
+			baseConfigurationReference = 18DD2FA51B0566114A53E14705D5C7D3 /* FMDB.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/FMDB/FMDB-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CD221028FA3864D14D850EF24C414B0E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6D4FBA00588F81BB5E58844620EB4E85 /* GPUImage.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				GCC_PREFIX_HEADER = "Target Support Files/MMPhotoPicker/MMPhotoPicker-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				GCC_PREFIX_HEADER = "Target Support Files/GPUImage/GPUImage-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_MODULE_NAME = MMPhotoPicker;
-				PRODUCT_NAME = MMPhotoPicker;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EEFCC2206E1E246AFBE457D4D43189D2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6D4FBA00588F81BB5E58844620EB4E85 /* GPUImage.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/GPUImage/GPUImage-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
 				PUBLIC_HEADERS_FOLDER_PATH = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -2592,11 +2552,10 @@
 			};
 			name = Release;
 		};
-		E86AA1D412B6050CEDC5B1F7554D0BBF /* Debug */ = {
+		FB1FFE1005013B129C0DEEA8BFEB6437 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7C3F11C90BE5AA2ACEAF13FC372042BD /* Pods-MediaUnitedKit.debug.xcconfig */;
+			baseConfigurationReference = D9E372A932204A5DDC5B817D0ECB1C64 /* Pods-MediaUnitedKit.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -2610,8 +2569,32 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 			};
-			name = Debug;
+			name = Release;
+		};
+		FC12D4C4045081D9E4DBCA9A288725AC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 18DD2FA51B0566114A53E14705D5C7D3 /* FMDB.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/FMDB/FMDB-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
@@ -2619,8 +2602,8 @@
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A73625DEBD810B78234FA1958C191C8C /* Debug */,
-				85B95B1234E227C814CCC2C7902D0916 /* Release */,
+				B76FD4F687484551839CB62D13331B5B /* Debug */,
+				4075BD435AE936C27BAFFDEE5605ECFE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -2628,8 +2611,8 @@
 		3428FA9D8846C35F2A42E9A088626AD1 /* Build configuration list for PBXNativeTarget "FMDB" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				4E325306CC9676AE36768C29A7BF95BC /* Debug */,
-				A5355117F36974A28246067DE3E6E734 /* Release */,
+				C6C29A598A4F4086514262A7B342B350 /* Debug */,
+				FC12D4C4045081D9E4DBCA9A288725AC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -2637,8 +2620,8 @@
 		6DD5470C9E8592094A47550DAEBEBAE2 /* Build configuration list for PBXNativeTarget "GPUImage" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				36333FE86427AF5CB6FECB4378EA1E30 /* Debug */,
-				7ABC5B0B41AE5AE4074048AD11BD4E30 /* Release */,
+				CD221028FA3864D14D850EF24C414B0E /* Debug */,
+				EEFCC2206E1E246AFBE457D4D43189D2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -2646,8 +2629,8 @@
 		7185135F229D9AC2CB865BBF683F7480 /* Build configuration list for PBXNativeTarget "Pods-MediaUnitedKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E86AA1D412B6050CEDC5B1F7554D0BBF /* Debug */,
-				87DAF503143353319F5F01B8408B157A /* Release */,
+				058E827C1A5C2BC3D4807B11F96EC578 /* Debug */,
+				FB1FFE1005013B129C0DEEA8BFEB6437 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -2655,8 +2638,8 @@
 		C29811A8F37208C0DD978A5D7C31456C /* Build configuration list for PBXNativeTarget "UUButton" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				21245A7F907129C5C123B1B3A8910F13 /* Debug */,
-				2410F638A0CA9152C2BD78295F7D2609 /* Release */,
+				43A5CBFB39F1EBD25B8EECDEF1D58A2C /* Debug */,
+				68D1550AB073528F24C46211463816CD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -2664,8 +2647,8 @@
 		CFB00DFDEF804FAD5E3E20BC782ADAB8 /* Build configuration list for PBXNativeTarget "Masonry" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1D3F48869EA6A0024D621535B6BC77C9 /* Debug */,
-				A254A1D5CAE40ABC54B15E5215496D62 /* Release */,
+				153B48D99DFFB2B89EB051FEA4680E1E /* Debug */,
+				670998B501DFFE8EC0CA1D48B6A9EA4F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -2673,8 +2656,8 @@
 		DBB7F03697ADA9901F580AC1D68A8CA0 /* Build configuration list for PBXNativeTarget "MMPhotoPicker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				74D381F96E50998D0D2C2BD57F4AC61D /* Debug */,
-				B21D9F75531E75BABC7DAF022AFC154D /* Release */,
+				6DE2AAC9F261B90D9AB0093FE6307B7A /* Debug */,
+				366E58450A1C99FDE37620F6CD1420FB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

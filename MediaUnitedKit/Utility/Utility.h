@@ -13,12 +13,13 @@
 @interface Utility : NSObject
 
 #pragma mark - 时间
-+ (long long)getNowTimestampSec;
-+ (long long)getNowTimestampMesc;
-+ (NSString *)getNowTimestampString;
-+ (NSString *)getHMSFormatBySeconds:(int)seconds;
 
-#pragma mark - 时间戳与日期的相互转换
+// 获取当前时间的时间戳(秒)
++ (long long)getNowTimestampSec;
+// 获取当前时间的时间戳字符串
++ (NSString *)getNowTimestampString;
+// 获取时分秒
++ (NSString *)getHMSFormatBySeconds:(int)seconds;
 // 时间戳转日期
 + (NSString *)getDateByTimestamp:(long long)timestamp type:(NSInteger)timeType;
 // 日期转时间戳

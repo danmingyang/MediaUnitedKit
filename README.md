@@ -1,6 +1,6 @@
 ## 功能介绍
 
-**1. 图像/视频采集（`MediaCaptureController`）：**
+**1. 图像/视频采集：**`MediaCaptureController`
 
 * 支持拍照、录制切换；
 * 支持点击对焦；
@@ -10,18 +10,18 @@
 * 支持屏幕旋转等。
 
 
-**2. 相册创建及保存（`Utility`）：**
+**2. 相册创建及保存：**`Utility`
 
 * 支持创建自定义相册；
 * 支持保存图片到自定义相册。
 
 
-**3. 图像编辑（`EditorViewController`）：**
+**3. 图像编辑：**`EditorViewController`
 
 * 支持不规则裁剪、旋转、加框、黑白、撤销。
 
 
-**4. 图片选择器（`MMPhotoPicker`）：**
+**4. 图片选择器：**`MMPhotoPicker`
 
 * 支持多张图片选取；
 * 支持预览；

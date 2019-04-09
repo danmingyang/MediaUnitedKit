@@ -5,7 +5,6 @@ target 'MediaUnitedKit' do
     pod "mp3lame-for-ios"
     pod "FMDB"
     pod "GPUImage"
-    pod "Masonry"
     pod "MMPhotoPicker"
     pod "UUButton"
     pod "UMengAnalytics-NO-IDFA"

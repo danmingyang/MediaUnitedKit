@@ -14,7 +14,7 @@
 #import "UIImage+Editor.h"
 #import "MMTabBar.h"
 #import "Utility.h"
-#import <MMPhotoPickerConst.h>
+#import <MMPhotoPickerMacros.h>
 
 // 打印
 #ifdef DEBUG

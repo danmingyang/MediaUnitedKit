@@ -20,10 +20,6 @@
 + (NSString *)getNowTimestampString;
 // 获取时分秒
 + (NSString *)getHMSFormatBySeconds:(int)seconds;
-// 时间戳转日期
-+ (NSString *)getDateByTimestamp:(long long)timestamp type:(NSInteger)timeType;
-// 日期转时间戳
-+ (NSInteger)getTimestampByDate:(NSString *)dateString type:(NSInteger)timeType;
 
 #pragma mark - 文件路径
 + (NSString *)getDocDir;
@@ -46,7 +42,6 @@
 
 #pragma mark - 图片处理
 + (UIImage *)fixOrientation:(UIImage *)aImage;
-+ (UIImage *)imageByScalingToMaxSize:(UIImage *)sourceImage;
 + (UIImage *)imageByScalingAndCroppingForSourceImage:(UIImage *)sourceImage targetSize:(CGSize)targetSize;
 
 @end

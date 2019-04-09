@@ -27,10 +27,8 @@
 {
     [super viewDidLoad];
     self.title = @"音频播放";
-    [self.view addSubview:self.localBtn];
-    [self.view addSubview:self.remoteBtn];
-    [self.view addSubview:self.pathLabel];
-    [self.view addSubview:self.playBtn];
+    // UI
+    [self configUI];
     // 播放
     _audioUtil = [MMAudioUtil instance];
     _remoteMP3Path = @"http://39.108.135.80:8080/file/message/1234/voi/20170918114342.mp3";
@@ -72,73 +70,62 @@
     }
 }
 
-#pragma mark - lazy load
-- (UIButton *)localBtn
+#pragma mark - config ui
+- (void)configUI
 {
-    if (!_localBtn) {
-        _localBtn = [[UIButton alloc] initWithFrame:CGRectMake((kScreenWidth-220)/2, 50, 100, 40)];
-        _localBtn.tag = 100;
-        _localBtn.selected = YES;
-        _localBtn.layer.masksToBounds = YES;
-        _localBtn.layer.cornerRadius = _localBtn.height/2;
-        _localBtn.titleLabel.font = [UIFont boldSystemFontOfSize:15.0];
-        [_localBtn setTitle:@"本地音频" forState:UIControlStateNormal];
-        [_localBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
-        [_localBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
-        [_localBtn setBackgroundImage:[UIImage imageFromColor:kUnitUnableColor] forState:UIControlStateNormal];
-        [_localBtn setBackgroundImage:[UIImage imageFromColor:kUnitMainColor] forState:UIControlStateSelected];
-        [_localBtn addTarget:self action:@selector(selectType:) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _localBtn;
-}
-
-- (UIButton *)remoteBtn
-{
-    if (!_remoteBtn) {
-        _remoteBtn = [[UIButton alloc] initWithFrame:CGRectMake(self.localBtn.right+20, 50, 100, 40)];
-        _remoteBtn.tag = 200;
-        _remoteBtn.selected = NO;
-        _remoteBtn.layer.masksToBounds = YES;
-        _remoteBtn.layer.cornerRadius = _remoteBtn.height/2;
-        _remoteBtn.titleLabel.font = [UIFont boldSystemFontOfSize:15.0];
-        [_remoteBtn setTitle:@"在线音频" forState:UIControlStateNormal];
-        [_remoteBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
-        [_remoteBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
-        [_remoteBtn setBackgroundImage:[UIImage imageFromColor:kUnitUnableColor] forState:UIControlStateNormal];
-        [_remoteBtn setBackgroundImage:[UIImage imageFromColor:kUnitMainColor] forState:UIControlStateSelected];
-        [_remoteBtn addTarget:self action:@selector(selectType:) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _remoteBtn;
-}
-
-- (UILabel *)pathLabel
-{
-    if (!_pathLabel) {
-        _pathLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 120, kScreenWidth-20, 60)];
-        _pathLabel.font = [UIFont systemFontOfSize:12.0];
-        _pathLabel.textColor = [UIColor lightGrayColor];
-        _pathLabel.numberOfLines = 0;
-        _pathLabel.text = [[Utility getAudioDir] stringByAppendingPathComponent:self.mp3FileName];
-    }
-    return _pathLabel;
-}
-
-- (UIButton *)playBtn
-{
-    if (!_playBtn) {
-        _playBtn = [[UIButton alloc] initWithFrame:CGRectMake((kScreenWidth-60)/2, 200, 60, 60)];
-        _playBtn.selected = NO;
-        [_playBtn setImage:[UIImage imageNamed:@"media_play"] forState:UIControlStateNormal];
-        [_playBtn setImage:[UIImage imageNamed:@"media_pause"] forState:UIControlStateSelected];
-        [_playBtn addTarget:self action:@selector(playAudio) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _playBtn;
+    _localBtn = [[UIButton alloc] initWithFrame:CGRectMake((kScreenWidth-220)/2, 50, 100, 40)];
+    _localBtn.tag = 100;
+    _localBtn.selected = YES;
+    _localBtn.layer.masksToBounds = YES;
+    _localBtn.layer.cornerRadius = _localBtn.height/2;
+    _localBtn.titleLabel.font = [UIFont boldSystemFontOfSize:15.0];
+    [_localBtn setTitle:@"本地音频" forState:UIControlStateNormal];
+    [_localBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    [_localBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+    [_localBtn setBackgroundImage:[UIImage imageFromColor:kUnitUnableColor] forState:UIControlStateNormal];
+    [_localBtn setBackgroundImage:[UIImage imageFromColor:kUnitMainColor] forState:UIControlStateSelected];
+    [_localBtn addTarget:self action:@selector(selectType:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_localBtn];
+    
+    _remoteBtn = [[UIButton alloc] initWithFrame:CGRectMake(self.localBtn.right+20, 50, 100, 40)];
+    _remoteBtn.tag = 200;
+    _remoteBtn.selected = NO;
+    _remoteBtn.layer.masksToBounds = YES;
+    _remoteBtn.layer.cornerRadius = _remoteBtn.height/2;
+    _remoteBtn.titleLabel.font = [UIFont boldSystemFontOfSize:15.0];
+    [_remoteBtn setTitle:@"在线音频" forState:UIControlStateNormal];
+    [_remoteBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    [_remoteBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+    [_remoteBtn setBackgroundImage:[UIImage imageFromColor:kUnitUnableColor] forState:UIControlStateNormal];
+    [_remoteBtn setBackgroundImage:[UIImage imageFromColor:kUnitMainColor] forState:UIControlStateSelected];
+    [_remoteBtn addTarget:self action:@selector(selectType:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_remoteBtn];
+    
+    _pathLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 120, kScreenWidth-20, 60)];
+    _pathLabel.font = [UIFont systemFontOfSize:12.0];
+    _pathLabel.textColor = [UIColor lightGrayColor];
+    _pathLabel.numberOfLines = 0;
+    _pathLabel.text = [[Utility getAudioDir] stringByAppendingPathComponent:self.mp3FileName];
+    [self.view addSubview:_pathLabel];
+    
+    _playBtn = [[UIButton alloc] initWithFrame:CGRectMake((kScreenWidth-60)/2, 200, 60, 60)];
+    _playBtn.selected = NO;
+    [_playBtn setImage:[UIImage imageNamed:@"media_play"] forState:UIControlStateNormal];
+    [_playBtn setImage:[UIImage imageNamed:@"media_pause"] forState:UIControlStateSelected];
+    [_playBtn addTarget:self action:@selector(playAudio) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_playBtn];
 }
 
 #pragma mark -
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+}
+
+- (void)dealloc
+{
+    [_audioUtil pause];
+    _audioUtil = nil;
 }
 
 @end

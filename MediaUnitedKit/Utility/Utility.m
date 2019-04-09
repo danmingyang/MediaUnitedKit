@@ -23,7 +23,15 @@ static NSString * kAssetsGroup = @"MUK";
 // 获取当前时间的时间戳字符串(秒)
 + (NSString *)getNowTimestampString
 {
-    NSString *timeString = [self getDateByTimestamp:[self getNowTimestampSec] type:17];
+    NSDateFormatter * dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+    [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+    [dateFormatter setTimeZone:[NSTimeZone timeZoneWithName:@"Asia/Shanghai"]];
+    [dateFormatter setDateFormat:@"yyyyMMddHHmmss"];
+    
+    NSTimeInterval time = [self getNowTimestampSec];
+    NSDate * date = [NSDate dateWithTimeIntervalSince1970:time];
+    NSString * timeString = [dateFormatter stringFromDate:date];
     return timeString;
 }
 
@@ -37,199 +45,9 @@ static NSString * kAssetsGroup = @"MUK";
     return hmsFormat;
 }
 
-// 时间戳转日期
-+ (NSString *)getDateByTimestamp:(long long)timestamp type:(NSInteger)timeType
-{
-    if (timestamp == 0) {
-        return nil;
-    }
-    NSTimeInterval time = timestamp;
-    NSDate *detaildate =[NSDate dateWithTimeIntervalSince1970:(NSTimeInterval)time];
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
-    [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
-    dateFormatter.timeZone = [NSTimeZone timeZoneWithName:@"Asia/Shanghai"];
-    
-    // 分类处理
-    switch (timeType)
-    {
-        case 0: {
-            [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-            break;
-        }
-        case 1:{
-            [dateFormatter setDateFormat:@"yyyy-MM-dd (EEE)"];
-            break;
-        }
-        case 2: {
-            [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm"];
-            break;
-        }
-        case 3: {
-            [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm EEE"];
-            break;
-        }
-        case 4: {
-            [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-            break;
-        }
-        case 5: {
-            [dateFormatter setDateFormat:@"yyyy/MM/dd"];
-            break;
-        }
-        case 6: {
-            [dateFormatter setDateFormat:@"yyyy/MM/dd HH:mm:ss"];
-            break;
-        }
-        case 7: {
-            [dateFormatter setDateFormat:@"yyyy年MM月"];
-            break;
-        }
-        case 8: {
-            [dateFormatter setDateFormat:@"yyyy年MM月dd日"];
-            break;
-        }
-        case 9:{
-            [dateFormatter setDateFormat:@"yyyy年MM月dd日 EEE"];
-            break;
-        }
-        case 10: {
-            [dateFormatter setDateFormat:@"yyyy年MM月dd日 HH:mm:ss"];
-            break;
-        }
-        case 11: {
-            [dateFormatter setDateFormat:@"yyyy/MM/dd"];
-            break;
-        }
-        case 12: {
-            [dateFormatter setDateFormat:@"yyyy/MM/dd HH:mm:ss"];
-            break;
-        }
-        case 13: {
-            [dateFormatter setDateFormat:@"yyyy.MM.dd"];
-            break;
-        }
-        case 14: {
-            [dateFormatter setDateFormat:@"MM-dd HH:mm"];
-            break;
-        }
-        case 15: {
-            [dateFormatter setDateFormat:@"dd M EEE"];
-            break;
-        }
-        case 16: {
-            [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss EEE"];
-            break;
-        }
-        case 17: {
-            [dateFormatter setDateFormat:@"yyyyMMddHHmmss"];
-            break;
-        }
-        default:
-            break;
-    }
-    NSString *timeString = [dateFormatter stringFromDate:detaildate];
-    return timeString;
-}
-
-// 日期转时间戳
-+ (NSInteger)getTimestampByDate:(NSString *)dateString type:(NSInteger)timeType;
-{
-    if (!dateString) {
-        return 0;
-    }
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
-    [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
-    
-    switch (timeType)
-    {
-        case 0: {
-            [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-            break;
-        }
-        case 1:{
-            [dateFormatter setDateFormat:@"yyyy-MM-dd (EEE)"];
-            break;
-        }
-        case 2: {
-            [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm"];
-            break;
-        }
-        case 3: {
-            [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm EEE"];
-            break;
-        }
-        case 4: {
-            [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-            break;
-        }
-        case 5: {
-            [dateFormatter setDateFormat:@"yyyy/MM/dd"];
-            break;
-        }
-        case 6: {
-            [dateFormatter setDateFormat:@"yyyy/MM/dd HH:mm:ss"];
-            break;
-        }
-        case 7: {
-            [dateFormatter setDateFormat:@"yyyy年MM月"];
-            break;
-        }
-        case 8: {
-            [dateFormatter setDateFormat:@"yyyy年MM月dd日"];
-            break;
-        }
-        case 9:{
-            [dateFormatter setDateFormat:@"yyyy年MM月dd日 EEE"];
-            break;
-        }
-        case 10: {
-            [dateFormatter setDateFormat:@"yyyy年MM月dd日 HH:mm:ss"];
-            break;
-        }
-        case 11: {
-            [dateFormatter setDateFormat:@"yyyy/MM/dd"];
-            break;
-        }
-        case 12: {
-            [dateFormatter setDateFormat:@"yyyy/MM/dd HH:mm:ss"];
-            break;
-        }
-        case 13: {
-            [dateFormatter setDateFormat:@"yyyy.MM.dd"];
-            break;
-        }
-        case 14: {
-            [dateFormatter setDateFormat:@"MM-dd HH:mm"];
-            break;
-        }
-        case 15: {
-            [dateFormatter setDateFormat:@"dd M EEE"];
-            break;
-        }
-        case 16: {
-            [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss EEE"];
-            break;
-        }
-        case 17: {
-            [dateFormatter setDateFormat:@"yyyyMMddHHmmss"];
-            break;
-        }
-        default:
-            break;
-    }
-    NSTimeZone * timeZone = [NSTimeZone timeZoneWithName:@"Asia/Shanghai"];
-    [dateFormatter setTimeZone:timeZone];
-    NSDate * date = [dateFormatter dateFromString:dateString];
-    NSTimeInterval a = [date timeIntervalSince1970];
-    NSInteger timestamp = a;
-    return timestamp;
-}
-
 #pragma mark - 文件、路劲
 // doc路径
-+( NSString *)getDocDir
++ ( NSString *)getDocDir
 {
     NSArray *searchPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentPath = [searchPaths objectAtIndex:0];
@@ -246,6 +64,7 @@ static NSString * kAssetsGroup = @"MUK";
     }
     return videoDir;
 }
+
 // 获取音频文件夹路径
 + (NSString *)getAudioDir
 {
@@ -291,6 +110,7 @@ static NSString * kAssetsGroup = @"MUK";
 }
 
 #pragma mark - 权限
+// 麦克风权限
 + (BOOL)isAudioRecordPermit
 {
     __block BOOL isOK = YES;
@@ -307,6 +127,7 @@ static NSString * kAssetsGroup = @"MUK";
     return isOK;
 }
 
+// 相册权限
 + (BOOL)isPhotoLibraryPermit
 {
     __block BOOL isOK = YES;
@@ -317,6 +138,7 @@ static NSString * kAssetsGroup = @"MUK";
     return isOK;
 }
 
+// 相机权限
 + (BOOL)isCameraPermit
 {
     __block BOOL isOK = YES;
@@ -328,6 +150,7 @@ static NSString * kAssetsGroup = @"MUK";
 }
 
 #pragma mark - 创建自定义相册
+// 保存图片到自定义相册
 + (void)writeImageToMUKAssetsGroup:(UIImage *)image completion:(void(^)(BOOL isSuccess))completion
 {
     PHAuthorizationStatus oldStatus = [PHPhotoLibrary authorizationStatus];
@@ -403,6 +226,7 @@ static NSString * kAssetsGroup = @"MUK";
     }];
 }
 
+// 保存视频到自定义相册
 + (void)writeVideoToMUKAssetsGroup:(NSURL *)videoURL completion:(void(^)(BOOL isSuccess))completion
 {
     PHAuthorizationStatus oldStatus = [PHPhotoLibrary authorizationStatus];
@@ -479,9 +303,9 @@ static NSString * kAssetsGroup = @"MUK";
 }
 
 #pragma mark - 图片
+// 调整图片方向
 + (UIImage *)fixOrientation:(UIImage *)aImage
 {
-    
     // No-op if the orientation is already correct
     if (aImage.imageOrientation == UIImageOrientationUp)
         return aImage;
@@ -558,71 +382,4 @@ static NSString * kAssetsGroup = @"MUK";
     return img;
 }
 
-+ (UIImage *)imageByScalingToMaxSize:(UIImage *)sourceImage
-{
-    if (sourceImage.size.width < kScreenWidth) return sourceImage;
-    CGFloat btWidth = 0.0f;
-    CGFloat btHeight = 0.0f;
-    if (sourceImage.size.width > sourceImage.size.height) {
-        btHeight = kScreenWidth;
-        btWidth = sourceImage.size.width * (kScreenWidth / sourceImage.size.height);
-    } else {
-        btWidth = kScreenWidth;
-        btHeight = sourceImage.size.height * (kScreenWidth / sourceImage.size.width);
-    }
-    CGSize targetSize = CGSizeMake(btWidth, btHeight);
-    return [self imageByScalingAndCroppingForSourceImage:sourceImage targetSize:targetSize];
-}
-
-+ (UIImage *)imageByScalingAndCroppingForSourceImage:(UIImage *)sourceImage targetSize:(CGSize)targetSize
-{
-    UIImage *newImage = nil;
-    CGSize imageSize = sourceImage.size;
-    CGFloat width = imageSize.width;
-    CGFloat height = imageSize.height;
-    CGFloat targetWidth = targetSize.width;
-    CGFloat targetHeight = targetSize.height;
-    CGFloat scaleFactor = 0.0;
-    CGFloat scaledWidth = targetWidth;
-    CGFloat scaledHeight = targetHeight;
-    CGPoint thumbnailPoint = CGPointMake(0.0,0.0);
-    if (CGSizeEqualToSize(imageSize, targetSize) == NO)
-    {
-        CGFloat widthFactor = targetWidth / width;
-        CGFloat heightFactor = targetHeight / height;
-        
-        if (widthFactor > heightFactor)
-            scaleFactor = widthFactor; // scale to fit height
-        else
-            scaleFactor = heightFactor; // scale to fit width
-        scaledWidth  = width * scaleFactor;
-        scaledHeight = height * scaleFactor;
-        
-        // center the image
-        if (widthFactor > heightFactor)
-        {
-            thumbnailPoint.y = (targetHeight - scaledHeight) * 0.5;
-        }
-        else
-            if (widthFactor < heightFactor)
-            {
-                thumbnailPoint.x = (targetWidth - scaledWidth) * 0.5;
-            }
-    }
-    UIGraphicsBeginImageContext(targetSize); // this will crop
-    CGRect thumbnailRect = CGRectZero;
-    thumbnailRect.origin = thumbnailPoint;
-    thumbnailRect.size.width  = scaledWidth;
-    thumbnailRect.size.height = scaledHeight;
-    
-    [sourceImage drawInRect:thumbnailRect];
-    
-    newImage = UIGraphicsGetImageFromCurrentImageContext();
-    if(newImage == nil)
-        DLog(@"could not scale image");
-    
-    //pop the context to get back to the default
-    UIGraphicsEndImageContext();
-    return newImage;
-}
 @end

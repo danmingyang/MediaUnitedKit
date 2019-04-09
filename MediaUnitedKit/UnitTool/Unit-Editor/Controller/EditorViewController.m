@@ -15,26 +15,16 @@
 
 @interface EditorViewController ()<MMTabBarDelegate,MMEditViewDelegate,MMBorderViewDelegate>
 
-// 当前编辑图片
-@property (nonatomic, strong) UIImageView * imageView;
-// 底部菜单
-@property (nonatomic, strong) MMTabBar * tabBar;
-// 编辑菜单
-@property (nonatomic, strong) MMEditView * editView;
-// 边框选择视图
-@property (nonatomic, strong) MMBorderView * borderView;
-// 图片裁剪
-@property (nonatomic, strong) MMImageClipper * clipView;
-// 编辑的model
-@property (nonatomic, strong) PhotoModel * photoModel;
-// 未编辑之前图片
-@property (nonatomic, strong) UIImage * originImage;
-// 最后一次编辑后的图片
-@property (nonatomic, strong) UIImage * editImage;
-// 记录编辑的索引
-@property (nonatomic, assign) NSInteger editIndex;
-// 黑白化
-@property (nonatomic, assign) BOOL isSketch;
+@property (nonatomic, strong) UIImageView * imageView; // 当前编辑图片
+@property (nonatomic, strong) MMTabBar * tabBar; // 底部菜单
+@property (nonatomic, strong) MMEditView * editView; // 编辑菜单
+@property (nonatomic, strong) MMBorderView * borderView; // 边框选择视图
+@property (nonatomic, strong) MMImageClipper * clipView; // 图片裁剪
+@property (nonatomic, strong) PhotoModel * photoModel; // 编辑的model
+@property (nonatomic, strong) UIImage * originImage; // 未编辑之前图片
+@property (nonatomic, strong) UIImage * editImage; // 最后一次编辑后的图片
+@property (nonatomic, assign) NSInteger editIndex; // 记录编辑的索引
+@property (nonatomic, assign) BOOL isSketch; // 黑白化
 
 @end
 

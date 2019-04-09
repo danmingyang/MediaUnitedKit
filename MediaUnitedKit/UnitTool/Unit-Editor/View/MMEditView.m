@@ -41,7 +41,9 @@
         [button addTarget:self action:@selector(btClicked:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:button];
         // 中间的图片
-        [self addSubview:self.midImageView];
+        CGFloat h = 28;
+        _midImageView = [[UIImageView alloc] initWithFrame:CGRectMake((kScreenWidth-h)/2, (50-h)/2, h, h)];
+        [self addSubview:_midImageView];
     }
     return self;
 }
@@ -49,16 +51,6 @@
 - (void)setMidImage:(UIImage *)midImage
 {
     self.midImageView.image = midImage;
-}
-
-#pragma mark  - 视图
-- (UIImageView *)midImageView
-{
-    if (!_midImageView) {
-        CGFloat h = 28;
-        _midImageView = [[UIImageView alloc] initWithFrame:CGRectMake((kScreenWidth-h)/2, (50-h)/2, h, h)];
-    }
-    return _midImageView;
 }
 
 #pragma mark - 点击事件

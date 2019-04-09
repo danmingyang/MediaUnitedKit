@@ -55,16 +55,16 @@ static NSString *const CellIdentifier = @"GalleryCell";
 #pragma mark - 选择图片
 - (void)btClicked
 {
-    MMPhotoPickerController *mmVC = [[MMPhotoPickerController alloc] init];
-    mmVC.delegate = self;
-    mmVC.mainColor = kUnitMainColor;
-    mmVC.showEmptyAlbum = YES;
-    mmVC.showOriginImageOption = YES;
-    mmVC.maximumNumberOfImage = 9;
-//    mmVC.cropImageOption = YES;
-//    mmVC.singleImageOption = YES;
-    BaseNavigationController * mmNav = [[BaseNavigationController alloc] initWithRootViewController:mmVC];
-    [self.navigationController presentViewController:mmNav animated:YES completion:nil];
+    MMPhotoPickerController * controller = [[MMPhotoPickerController alloc] init];
+    controller.delegate = self;
+    controller.mainColor = kUnitMainColor;
+    controller.showEmptyAlbum = YES;
+    controller.showOriginImageOption = YES;
+    controller.maximumNumberOfImage = 9;
+//    controller.cropImageOption = YES;
+//    controller.singleImageOption = YES;
+    BaseNavigationController * navigation = [[BaseNavigationController alloc] initWithRootViewController:controller];
+    [self.navigationController presentViewController:navigation animated:YES completion:nil];
 }
 
 #pragma mark - 代理

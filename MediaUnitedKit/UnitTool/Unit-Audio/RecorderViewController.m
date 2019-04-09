@@ -18,26 +18,14 @@
     CGFloat btHeight;
     CGFloat btTop;
 }
-// 顶部视图
-@property (nonatomic, strong) UIView * topView;
-// 返回
-@property (nonatomic, strong) UIButton * backBtn;
-// 录制时闪烁的绿点
-@property (nonatomic, strong) UIImageView * dotImageView;
-// 标识
-@property (nonatomic, strong) UILabel * dotLabel;
-// 时长
-@property (nonatomic, strong) UILabel * timeLabel;
-// 完成
-@property (nonatomic, strong) UUButton * finishBtn;
-// 录制/暂停
-@property (nonatomic, strong) UUButton * pauseBtn;
-// 取消
-@property (nonatomic, strong) UUButton * cancelBtn;
-// 中间的图片
-@property (nonatomic, strong) UIImageView * midImageView;
-// 录音
-@property (nonatomic, strong) MMAudioUtil * audioUtil;
+
+@property (nonatomic, strong) UIImageView * dotImageView;  // 录制时闪烁的绿点
+@property (nonatomic, strong) UILabel * dotLabel; // 标识
+@property (nonatomic, strong) UILabel * timeLabel; // 时长
+@property (nonatomic, strong) UUButton * finishBtn; // 完成
+@property (nonatomic, strong) UUButton * pauseBtn; // 录制/暂停
+@property (nonatomic, strong) UUButton * cancelBtn; // 取消
+@property (nonatomic, strong) MMAudioUtil * audioUtil; // 录音
 
 @end
 
@@ -55,15 +43,8 @@
         btTop -= 20;
     }
     // 添加视图
-    [self.view addSubview:self.topView];
-    [self.view addSubview:self.midImageView];
-    [self.view addSubview:self.finishBtn];
-    [self.view addSubview:self.pauseBtn];
-    [self.view addSubview:self.cancelBtn];
-    [self.view addSubview:self.timeLabel];
-    self.finishBtn.hidden = YES;
-    self.cancelBtn.hidden = YES;
-    
+    [self configUI];
+    // util
     _audioUtil = [MMAudioUtil instance];
 }
 
@@ -71,11 +52,6 @@
 {
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = YES;
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -156,135 +132,103 @@
     self.timeLabel.text = [Utility getHMSFormatBySeconds:recordSeconds];
 }
 
-#pragma mark - lazy load
-- (UIView *)topView
+#pragma mark - config ui
+- (void)configUI
 {
-    if (!_topView) {
-        _topView = [[UIView alloc] initWithFrame:CGRectMake(0, kStatusHeight, kScreenWidth, kNavHeight)];
-        _topView.backgroundColor = [UIColor clearColor];
-        [_topView addSubview:self.backBtn];
-        [_topView addSubview:self.dotLabel];
-        [_topView addSubview:self.dotImageView];
+    // 顶部视图 ↓↓
+    UIView * topView = [[UIView alloc] initWithFrame:CGRectMake(0, kStatusHeight, kScreenWidth, kNavHeight)];
+    topView.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:topView];
+    // 返回按钮
+    UIButton * backBtn = [[UIButton alloc] initWithFrame:CGRectMake(10, 0, kNavHeight, kNavHeight)];
+    [backBtn setImage:[UIImage imageNamed:@"media_top_back"] forState:UIControlStateNormal];
+    [backBtn addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
+    [topView addSubview:backBtn];
+    // 绿点
+    NSString * title = @"录音";
+    CGFloat titleW = [title sizeWithFont:[UIFont systemFontOfSize:18.0] maxSize:CGSizeMake(kScreenWidth, kNavHeight)].width;
+    _dotLabel = [[UILabel alloc] initWithFrame:CGRectMake((kScreenWidth-titleW)/2, 0, titleW, kNavHeight)];
+    _dotLabel.backgroundColor = [UIColor clearColor];
+    _dotLabel.font = [UIFont systemFontOfSize:18.0];
+    _dotLabel.textColor = [UIColor whiteColor];
+    _dotLabel.text = title;
+    [topView addSubview:_dotLabel];
+    // 闪烁视图
+    _dotImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"media_dot_clear"]];
+    _dotImageView.center = _dotLabel.center;
+    _dotImageView.right = _dotLabel.left-5;
+    _dotImageView.animationImages = @[[UIImage imageNamed:@"media_dot"],[UIImage imageNamed:@"media_dot_clear"]];
+    _dotImageView.animationDuration = 0.8;
+    [topView addSubview:_dotImageView];
+  
+    // 中间圆圈图 ↓↓
+    UIImageView * midImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"audio_mid"]];
+    midImageView.size = CGSizeMake(self.view.width*2/3, self.view.width*2/3);
+    midImageView.center = self.view.center;
+    if (k_iPhoneX) {
+        midImageView.center = CGPointMake(self.view.center.x, self.view.center.y-20);
     }
-    return _topView;
-}
+    [self.view addSubview:midImageView];
+ 
+    // 完整按钮 ↓↓
+    _finishBtn = [[UUButton alloc] initWithFrame:CGRectMake(2*btMargin, btTop, btHeight, btHeight)];
+    _finishBtn.titleLabel.font = [UIFont systemFontOfSize:16.0];
+    _finishBtn.contentAlignment = UUContentAlignmentCenterImageTop;
+    [_finishBtn setTitle:@"完成" forState:UIControlStateNormal];
+    [_finishBtn setTitleColor:kUnitMainColor forState:UIControlStateHighlighted];
+    [_finishBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    [_finishBtn setImage:[UIImage imageNamed:@"audio_finish"] forState:UIControlStateNormal];
+    [_finishBtn setImage:[UIImage imageNamed:@"audio_finished"] forState:UIControlStateHighlighted];
+    [_finishBtn addTarget:self action:@selector(finishClicked) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_finishBtn];
+    // 暂停按钮
+    _pauseBtn = [[UUButton alloc] initWithFrame:CGRectMake(self.finishBtn.right+btMargin, btTop, btHeight, btHeight)];
+    _pauseBtn.selected = NO;
+    _pauseBtn.titleLabel.font = [UIFont systemFontOfSize:16.0];
+    _pauseBtn.contentAlignment = UUContentAlignmentCenterImageTop;
+    [_pauseBtn setTitle:@"继续" forState:UIControlStateNormal];
+    [_pauseBtn setTitle:@"暂停" forState:UIControlStateSelected];
+    [_pauseBtn setTitleColor:kUnitMainColor forState:UIControlStateHighlighted];
+    [_pauseBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    [_pauseBtn setImage:[UIImage imageNamed:@"audio_record"] forState:UIControlStateNormal];
+    [_pauseBtn setImage:[UIImage imageNamed:@"audio_pause"] forState:UIControlStateSelected];
+    [_pauseBtn addTarget:self action:@selector(recordClicked) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_pauseBtn];
+    // 取消按钮
+    _cancelBtn = [[UUButton alloc] initWithFrame:CGRectMake(self.pauseBtn.right+btMargin, btTop, btHeight, btHeight)];
+    _cancelBtn.titleLabel.font = [UIFont systemFontOfSize:16.0];
+    _cancelBtn.contentAlignment = UUContentAlignmentCenterImageTop;
+    [_cancelBtn setTitle: @"取消" forState:UIControlStateNormal];
+    [_cancelBtn setTitleColor:kUnitMainColor forState:UIControlStateHighlighted];
+    [_cancelBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    [_cancelBtn setImage:[UIImage imageNamed:@"audio_cancel"] forState:UIControlStateNormal];
+    [_cancelBtn setImage:[UIImage imageNamed:@"audio_canceled"] forState:UIControlStateHighlighted];
+    [_cancelBtn addTarget:self action:@selector(cancelClicked) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_cancelBtn];
 
-- (UIButton *)backBtn
-{
-    if (!_backBtn) {
-        _backBtn = [[UIButton alloc] initWithFrame:CGRectMake(10, 0, kNavHeight, kNavHeight)];
-        [_backBtn setImage:[UIImage imageNamed:@"media_top_back"] forState:UIControlStateNormal];
-        [_backBtn addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _backBtn;
-}
+    // 录制时间 ↓↓
+    _timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, topView.bottom, kScreenWidth, 44)];
+    _timeLabel.backgroundColor = [UIColor clearColor];
+    _timeLabel.font = [UIFont fontWithName:@"Thonburi" size:30.0];
+    _timeLabel.textColor = [UIColor whiteColor];
+    _timeLabel.textAlignment = NSTextAlignmentCenter;
+    _timeLabel.text = @"00:00:00";
+    [self.view addSubview:_timeLabel];
 
-- (UILabel *)dotLabel
-{
-    if (!_dotLabel) {
-        NSString * title = @"录音";
-        CGFloat titleW = [title sizeWithFont:[UIFont systemFontOfSize:18.0] maxSize:CGSizeMake(kScreenWidth, kNavHeight)].width;
-        _dotLabel = [[UILabel alloc] initWithFrame:CGRectMake((kScreenWidth-titleW)/2, 0, titleW, kNavHeight)];
-        _dotLabel.backgroundColor = [UIColor clearColor];
-        _dotLabel.font = [UIFont systemFontOfSize:18.0];
-        _dotLabel.textColor = [UIColor whiteColor];
-        _dotLabel.text = title;
-    }
-    return _dotLabel;
-}
-
-- (UILabel *)timeLabel
-{
-    if (!_timeLabel) {
-        _timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, self.topView.bottom, kScreenWidth, 44)];
-        _timeLabel.backgroundColor = [UIColor clearColor];
-        _timeLabel.font = [UIFont fontWithName:@"Thonburi" size:30.0];
-        _timeLabel.textColor = [UIColor whiteColor];
-        _timeLabel.textAlignment = NSTextAlignmentCenter;
-        _timeLabel.text = @"00:00:00";
-    }
-    return _timeLabel;
-}
-
-- (UIImageView *)dotImageView
-{
-    if (!_dotImageView) {
-        _dotImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"media_dot_clear"]];
-        _dotImageView.center = self.dotLabel.center;
-        _dotImageView.right = self.dotLabel.left-5;
-        _dotImageView.animationImages = @[[UIImage imageNamed:@"media_dot"],[UIImage imageNamed:@"media_dot_clear"]];
-        _dotImageView.animationDuration = 0.8;
-    }
-    return _dotImageView;
-}
-
-- (UIImageView *)midImageView
-{
-    if (!_midImageView) {
-        _midImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"audio_mid"]];
-        _midImageView.size = CGSizeMake(self.view.width*2/3, self.view.width*2/3);
-        _midImageView.center = self.view.center;
-        if (k_iPhoneX) {
-            _midImageView.center = CGPointMake(self.view.center.x, self.view.center.y-20);
-        }
-    }
-    return _midImageView;
-}
-
-- (UIButton *)finishBtn
-{
-    if (!_finishBtn) {
-        _finishBtn = [[UUButton alloc] initWithFrame:CGRectMake(2*btMargin, btTop, btHeight, btHeight)];
-        _finishBtn.titleLabel.font = [UIFont systemFontOfSize:16.0];
-        _finishBtn.contentAlignment = UUContentAlignmentCenterImageTop;
-        [_finishBtn setTitle:@"完成" forState:UIControlStateNormal];
-        [_finishBtn setTitleColor:kUnitMainColor forState:UIControlStateHighlighted];
-        [_finishBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
-        [_finishBtn setImage:[UIImage imageNamed:@"audio_finish"] forState:UIControlStateNormal];
-        [_finishBtn setImage:[UIImage imageNamed:@"audio_finished"] forState:UIControlStateHighlighted];
-        [_finishBtn addTarget:self action:@selector(finishClicked) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _finishBtn;
-}
-
-- (UIButton *)pauseBtn
-{
-    if (!_pauseBtn) {
-        _pauseBtn = [[UUButton alloc] initWithFrame:CGRectMake(self.finishBtn.right+btMargin, btTop, btHeight, btHeight)];
-        _pauseBtn.selected = NO;
-        _pauseBtn.titleLabel.font = [UIFont systemFontOfSize:16.0];
-        _pauseBtn.contentAlignment = UUContentAlignmentCenterImageTop;
-        [_pauseBtn setTitle:@"继续" forState:UIControlStateNormal];
-        [_pauseBtn setTitle:@"暂停" forState:UIControlStateSelected];
-        [_pauseBtn setTitleColor:kUnitMainColor forState:UIControlStateHighlighted];
-        [_pauseBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
-        [_pauseBtn setImage:[UIImage imageNamed:@"audio_record"] forState:UIControlStateNormal];
-        [_pauseBtn setImage:[UIImage imageNamed:@"audio_pause"] forState:UIControlStateSelected];
-        [_pauseBtn addTarget:self action:@selector(recordClicked) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _pauseBtn;
-}
-
-- (UIButton *)cancelBtn
-{
-    if (!_cancelBtn) {
-        _cancelBtn = [[UUButton alloc] initWithFrame:CGRectMake(self.pauseBtn.right+btMargin, btTop, btHeight, btHeight)];
-        _cancelBtn.titleLabel.font = [UIFont systemFontOfSize:16.0];
-        _cancelBtn.contentAlignment = UUContentAlignmentCenterImageTop;
-        [_cancelBtn setTitle: @"取消" forState:UIControlStateNormal];
-        [_cancelBtn setTitleColor:kUnitMainColor forState:UIControlStateHighlighted];
-        [_cancelBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
-        [_cancelBtn setImage:[UIImage imageNamed:@"audio_cancel"] forState:UIControlStateNormal];
-        [_cancelBtn setImage:[UIImage imageNamed:@"audio_canceled"] forState:UIControlStateHighlighted];
-        [_cancelBtn addTarget:self action:@selector(cancelClicked) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _cancelBtn;
+    self.finishBtn.hidden = YES;
+    self.cancelBtn.hidden = YES;
 }
 
 #pragma mark -
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+}
+
+- (void)dealloc
+{
+    [_audioUtil cancelRecord];
+    _audioUtil = nil;
 }
 
 @end

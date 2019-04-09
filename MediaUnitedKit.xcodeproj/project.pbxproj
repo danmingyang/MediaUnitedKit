@@ -30,10 +30,8 @@
 		FA3A1FAB21F994EE002D9B6C /* NSString+Category.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3A1F9421F994EE002D9B6C /* NSString+Category.m */; };
 		FA3A1FAC21F994EE002D9B6C /* JKDBModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3A1F9721F994EE002D9B6C /* JKDBModel.m */; };
 		FA3A1FAD21F994EE002D9B6C /* JKDBHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3A1F9821F994EE002D9B6C /* JKDBHelper.m */; };
-		FA3A1FBB21F9A133002D9B6C /* screenshot_2.png in Resources */ = {isa = PBXBuildFile; fileRef = FA3A1FB721F9A133002D9B6C /* screenshot_2.png */; };
 		FA3A1FBC21F9A133002D9B6C /* screenshot_1.png in Resources */ = {isa = PBXBuildFile; fileRef = FA3A1FB821F9A133002D9B6C /* screenshot_1.png */; };
 		FA3A1FBD21F9A133002D9B6C /* screenshot_0.png in Resources */ = {isa = PBXBuildFile; fileRef = FA3A1FB921F9A133002D9B6C /* screenshot_0.png */; };
-		FA3A1FBE21F9A133002D9B6C /* screenshot_3.png in Resources */ = {isa = PBXBuildFile; fileRef = FA3A1FBA21F9A133002D9B6C /* screenshot_3.png */; };
 		FD5715F18CDD45BC776DA2AD /* libPods-MediaUnitedKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A90E832BAF66F361C8A73EA8 /* libPods-MediaUnitedKit.a */; };
 /* End PBXBuildFile section */
 
@@ -85,10 +83,8 @@
 		FA3A1F9921F994EE002D9B6C /* JKDBModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKDBModel.h; sourceTree = "<group>"; };
 		FA3A1F9A21F994EE002D9B6C /* JKDBHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKDBHelper.h; sourceTree = "<group>"; };
 		FA3A1F9B21F994EE002D9B6C /* UIImage+Editor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Editor.h"; sourceTree = "<group>"; };
-		FA3A1FB721F9A133002D9B6C /* screenshot_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screenshot_2.png; sourceTree = "<group>"; };
 		FA3A1FB821F9A133002D9B6C /* screenshot_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screenshot_1.png; sourceTree = "<group>"; };
 		FA3A1FB921F9A133002D9B6C /* screenshot_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screenshot_0.png; sourceTree = "<group>"; };
-		FA3A1FBA21F9A133002D9B6C /* screenshot_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screenshot_3.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -255,13 +251,13 @@
 		FA3A1F9021F994EE002D9B6C /* Utility */ = {
 			isa = PBXGroup;
 			children = (
-				FA3A1F9621F994EE002D9B6C /* JKDB */,
-				FA3A1F9521F994EE002D9B6C /* Utility.h */,
-				FA3A1F9221F994EE002D9B6C /* Utility.m */,
-				FA3A1F9B21F994EE002D9B6C /* UIImage+Editor.h */,
-				FA3A1F9321F994EE002D9B6C /* UIImage+Editor.m */,
 				FA3A1F9121F994EE002D9B6C /* NSString+Category.h */,
 				FA3A1F9421F994EE002D9B6C /* NSString+Category.m */,
+				FA3A1F9B21F994EE002D9B6C /* UIImage+Editor.h */,
+				FA3A1F9321F994EE002D9B6C /* UIImage+Editor.m */,
+				FA3A1F9521F994EE002D9B6C /* Utility.h */,
+				FA3A1F9221F994EE002D9B6C /* Utility.m */,
+				FA3A1F9621F994EE002D9B6C /* JKDB */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -282,8 +278,6 @@
 			children = (
 				FA3A1FB921F9A133002D9B6C /* screenshot_0.png */,
 				FA3A1FB821F9A133002D9B6C /* screenshot_1.png */,
-				FA3A1FB721F9A133002D9B6C /* screenshot_2.png */,
-				FA3A1FBA21F9A133002D9B6C /* screenshot_3.png */,
 			);
 			path = Screenshot;
 			sourceTree = SOURCE_ROOT;
@@ -300,7 +294,6 @@
 				8BAC01651F73BBE7006A582C /* Frameworks */,
 				8BAC01661F73BBE7006A582C /* Resources */,
 				9DD70E4887F87E318984F7EA /* [CP] Copy Pods Resources */,
-				DDA3CF284B8B18C6199E4756 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -322,8 +315,8 @@
 				TargetAttributes = {
 					8BAC01671F73BBE7006A582C = {
 						CreatedOnToolsVersion = 8.2;
-						DevelopmentTeam = GRSZLFFNPH;
-						ProvisioningStyle = Automatic;
+						DevelopmentTeam = PS3T6HBA6H;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -353,10 +346,8 @@
 				FA3A1FBD21F9A133002D9B6C /* screenshot_0.png in Resources */,
 				8BAC017B1F73BBE9006A582C /* LaunchScreen.storyboard in Resources */,
 				8BD025D61F73BC9A00B8796F /* UnitedKit-Info.plist in Resources */,
-				FA3A1FBB21F9A133002D9B6C /* screenshot_2.png in Resources */,
 				FA3A1FBC21F9A133002D9B6C /* screenshot_1.png in Resources */,
 				8BAC01781F73BBE9006A582C /* Assets.xcassets in Resources */,
-				FA3A1FBE21F9A133002D9B6C /* screenshot_3.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -369,7 +360,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-MediaUnitedKit/Pods-MediaUnitedKit-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-MediaUnitedKit/Pods-MediaUnitedKit-resources.sh",
 				"${PODS_ROOT}/GPUImage/framework/Resources/lookup.png",
 				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_amatorka.png",
 				"${PODS_ROOT}/GPUImage/framework/Resources/lookup_miss_etikate.png",
@@ -388,7 +379,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MediaUnitedKit/Pods-MediaUnitedKit-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MediaUnitedKit/Pods-MediaUnitedKit-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		BBB9C7A84B59E3B8DDD7918A /* [CP] Check Pods Manifest.lock */ = {
@@ -407,25 +398,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		DDA3CF284B8B18C6199E4756 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MediaUnitedKit/Pods-MediaUnitedKit-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -568,14 +540,17 @@
 			baseConfigurationReference = 7063FE2ECE54AFE525576F0B /* Pods-MediaUnitedKit.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = GRSZLFFNPH;
+				CODE_SIGN_IDENTITY = "iPhone Developer: zhang yifei (K59WQZ35PJ)";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = PS3T6HBA6H;
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "MediaUnitedKit/UnitedKit-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/MediaUnitedKit/UnitedKit-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.lea.MediaUnitedKit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cmcc.DigitalHome;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = DigitalHome_app_apns_dev_pp;
 			};
 			name = Debug;
 		};
@@ -584,14 +559,17 @@
 			baseConfigurationReference = 2A12094C1FC53FC41762BC42 /* Pods-MediaUnitedKit.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = GRSZLFFNPH;
+				CODE_SIGN_IDENTITY = "iPhone Developer: zhang yifei (K59WQZ35PJ)";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = PS3T6HBA6H;
 				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "MediaUnitedKit/UnitedKit-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/MediaUnitedKit/UnitedKit-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.lea.MediaUnitedKit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cmcc.DigitalHome;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = DigitalHome_app_apns_dev_pp;
 			};
 			name = Release;
 		};

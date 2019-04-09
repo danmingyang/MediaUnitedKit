@@ -7,8 +7,6 @@
 //
 
 #import "MediaCaptureController.h"
- 
-#define k_PERMIT        9999
 
 @implementation MediaCaptureController
 
@@ -16,42 +14,20 @@
 {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor blackColor];
-    [self.view addSubview:self.bgView];
     
-    // 音频权限
+    // 麦克风权限
     if (![Utility isAudioRecordPermit]) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
-                                                        message:@"请在设置>隐私>麦克风中开启权限"
-                                                       delegate:self
-                                              cancelButtonTitle:@"知道了"
-                                              otherButtonTitles:nil, nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请在设置>隐私>麦克风中开启权限" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil, nil];
         alert.tag = k_PERMIT;
         [alert show];
         return;
     }
     // 相机权限
     if (![Utility isCameraPermit]) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
-                                                        message:@"请在设置>隐私>相机中开启权限"
-                                                       delegate:self
-                                              cancelButtonTitle:@"知道了"
-                                              otherButtonTitles:nil, nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请在设置>隐私>相机中开启权限" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil, nil];
         alert.tag = k_PERMIT;
         [alert show];
         return;
-    }
-
-    // 检测屏幕方向
-    self.orientation = AVCaptureVideoOrientationPortrait;
-    [self startMotionManager];
-
-    scaleNum = 1.f;
-    // 队列
-    sessionQueue = dispatch_queue_create("session queue", DISPATCH_QUEUE_SERIAL);
-    // 采集
-    captureSession = [[AVCaptureSession alloc] init];
-    if ([captureSession canSetSessionPreset:AVCaptureSessionPresetHigh]) {
-        captureSession.sessionPreset = AVCaptureSessionPresetHigh;
     }
     NSError *error = nil;
     // 获得输入设备
@@ -84,35 +60,30 @@
         [self backAction];
         return;
     }
+    
+    scaleNum = 1.f;
+    sessionQueue = dispatch_queue_create("session queue", DISPATCH_QUEUE_SERIAL);
+    captureSession = [[AVCaptureSession alloc] init];
+    if ([captureSession canSetSessionPreset:AVCaptureSessionPresetHigh]) {
+        captureSession.sessionPreset = AVCaptureSessionPresetHigh;
+    }
     // 将设备输入添加到会话中
     if ([captureSession canAddInput:captureDeviceInput]) {
         [captureSession addInput:captureDeviceInput];
         [captureSession addInput:audioCaptureDeviceInput];
         inputDevice = captureDeviceInput;
     }
-    // 相机的实时预览页面
-    previewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:captureSession];
-    previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
-    previewLayer.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight);
-    [previewLayer setAffineTransform:CGAffineTransformMakeScale(1.f, 1.f)];
-    [self.bgView.layer addSublayer:previewLayer];
     // 照片输出
     if ([captureSession canAddOutput:self.imageOutput]) {
         [captureSession addOutput:self.imageOutput];
     }
-    // 对焦
-    UITapGestureRecognizer *focusTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(focusGesture:)];
-    [focusTap setNumberOfTapsRequired:1];
-    [self.bgView addGestureRecognizer:focusTap];
-    // 伸缩
-    UITapGestureRecognizer *zoomTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(zoomGesture:)];
-    [zoomTap setNumberOfTapsRequired:2];
-    [self.bgView addGestureRecognizer:zoomTap];
-    [focusTap requireGestureRecognizerToFail:zoomTap];
-    // 视图
-    [self initViews];
     // 开始运行
     [captureSession startRunning];
+    // 检测屏幕方向
+    self.orientation = AVCaptureVideoOrientationPortrait;
+    [self startMotionManager];
+    // 视图
+    [self configUI];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -179,26 +150,6 @@
             self.orientation = AVCaptureVideoOrientationLandscapeRight;
         }
     }
-}
-
-#pragma mark - 添加各个视图
-- (void)initViews
-{
-    // 依次添加视图
-    [self.bgView addSubview:self.backBtn];
-    [self.bgView addSubview:self.frontBtn];
-    [self.bgView addSubview:self.flashBtn];
-    [self.bgView addSubview:self.flashView];
-    [self.bgView addSubview:self.previewBtn];
-    [self.bgView addSubview:self.videoBtn];
-    [self.bgView addSubview:self.photoBtn];
-    [self.bgView addSubview:self.switchBtn];
-    [self.bgView addSubview:self.focusImageView];
-    [self.bgView addSubview:self.timeLabel];
-    [self.bgView addSubview:self.dotImageView];
-    self.dotImageView.hidden = YES;
-    self.videoBtn.hidden = YES;
-    self.flashView.hidden = YES;
 }
 
 #pragma mark - 点击事件
@@ -569,151 +520,115 @@
     }
 }
 
-#pragma mark - UI图层区
-- (UIView *)bgView
+#pragma mark - 添加各个视图
+- (void)configUI
 {
-    if (!_bgView) {
-        _bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
-        _bgView.backgroundColor = [UIColor clearColor];
-    }
-    return _bgView;
-}
-
-- (UIButton *)backBtn
-{
-    if (!_backBtn) {
-        _backBtn = [[UIButton alloc] initWithFrame:CGRectMake(10, kStatusHeight, kNavHeight, kNavHeight)];
-        [_backBtn setImage:[UIImage imageNamed:@"media_top_back"] forState:UIControlStateNormal];
-        [_backBtn addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _backBtn;
-}
-
-- (UIButton *)frontBtn
-{
-    if (!_frontBtn) {
-        _frontBtn = [[UIButton alloc] initWithFrame:CGRectMake(kScreenWidth-kNavHeight-10, kStatusHeight, kNavHeight, kNavHeight)];
-        [_frontBtn setImage:[UIImage imageNamed:@"media_top_switch"] forState:UIControlStateNormal];
-        [_frontBtn addTarget:self action:@selector(frontSwitch:) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _frontBtn;
-}
-
-- (UIButton *)flashBtn
-{
-    if (!_flashBtn) {
-        _flashBtn = [[UIButton alloc] initWithFrame:CGRectMake((kScreenWidth-200)/2, kStatusHeight, 50, kNavHeight)];
-        [_flashBtn setImage:[UIImage imageNamed:@"media_flash_2"] forState:UIControlStateNormal];
-        [_flashBtn setImage:[UIImage imageNamed:@"media_flash_2"] forState:UIControlStateSelected];
-        [_flashBtn addTarget:self action:@selector(flashClicked) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _flashBtn;
-}
-
-- (UIView *)flashView
-{
-    if (!_flashView) {
-        _flashView = [[UIView alloc] initWithFrame:CGRectMake(self.flashBtn.right-10, kStatusHeight, 150, kNavHeight)];
-        _flashView.backgroundColor = [UIColor clearColor];
-        
-        for (NSInteger i = 0; i < 3; i ++) {
-            UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(50*i, 0, 50, kNavHeight)];
-            btn.tag = 100+(2-i);
-            btn.backgroundColor = [UIColor clearColor];
-            btn.titleLabel.font = [UIFont systemFontOfSize:13.0];
-            [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-            [btn addTarget:self action:@selector(flashSwitch:) forControlEvents:UIControlEventTouchUpInside];
-            if (i == 0) {
-                [btn setTitle:@"自动" forState:UIControlStateNormal];
-                [btn setTitleColor:RGBColor(255.0, 197.0, 2, 1.0) forState:UIControlStateNormal];
-            } else if (i == 1) {
-                [btn setTitle:@"打开" forState:UIControlStateNormal];
-            } else {
-                [btn setTitle:@"关闭" forState:UIControlStateNormal];
-            }
-            [_flashView addSubview:btn];
+    // 依次添加视图
+    _bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
+    _bgView.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:_bgView];
+    // 相机的实时预览页面
+    previewLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:captureSession];
+    previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+    previewLayer.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight);
+    [previewLayer setAffineTransform:CGAffineTransformMakeScale(1.f, 1.f)];
+    [_bgView.layer addSublayer:previewLayer];
+    // 返回
+    _backBtn = [[UIButton alloc] initWithFrame:CGRectMake(10, kStatusHeight, kNavHeight, kNavHeight)];
+    [_backBtn setImage:[UIImage imageNamed:@"media_top_back"] forState:UIControlStateNormal];
+    [_backBtn addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
+    [_bgView addSubview:_backBtn];
+    // 前置转换
+    _frontBtn = [[UIButton alloc] initWithFrame:CGRectMake(kScreenWidth-kNavHeight-10, kStatusHeight, kNavHeight, kNavHeight)];
+    [_frontBtn setImage:[UIImage imageNamed:@"media_top_switch"] forState:UIControlStateNormal];
+    [_frontBtn addTarget:self action:@selector(frontSwitch:) forControlEvents:UIControlEventTouchUpInside];
+    [_bgView addSubview:_frontBtn];
+    // 闪光灯切换
+    _flashBtn = [[UIButton alloc] initWithFrame:CGRectMake((kScreenWidth-200)/2, kStatusHeight, 50, kNavHeight)];
+    [_flashBtn setImage:[UIImage imageNamed:@"media_flash_2"] forState:UIControlStateNormal];
+    [_flashBtn setImage:[UIImage imageNamed:@"media_flash_2"] forState:UIControlStateSelected];
+    [_flashBtn addTarget:self action:@selector(flashClicked) forControlEvents:UIControlEventTouchUpInside];
+    [_bgView addSubview:_flashBtn];
+    // 闪光灯
+    _flashView = [[UIView alloc] initWithFrame:CGRectMake(self.flashBtn.right-10, kStatusHeight, 150, kNavHeight)];
+    _flashView.backgroundColor = [UIColor clearColor];
+    for (NSInteger i = 0; i < 3; i ++) {
+        UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(50*i, 0, 50, kNavHeight)];
+        btn.tag = 100+(2-i);
+        btn.backgroundColor = [UIColor clearColor];
+        btn.titleLabel.font = [UIFont systemFontOfSize:13.0];
+        [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [btn addTarget:self action:@selector(flashSwitch:) forControlEvents:UIControlEventTouchUpInside];
+        if (i == 0) {
+            [btn setTitle:@"自动" forState:UIControlStateNormal];
+            [btn setTitleColor:RGBColor(255.0, 197.0, 2, 1.0) forState:UIControlStateNormal];
+        } else if (i == 1) {
+            [btn setTitle:@"打开" forState:UIControlStateNormal];
+        } else {
+            [btn setTitle:@"关闭" forState:UIControlStateNormal];
         }
+        [_flashView addSubview:btn];
     }
-    return _flashView;
+    [_bgView addSubview:_flashView];
+    // 预览
+    _previewBtn = [[UIButton alloc] initWithFrame:CGRectMake(15, kScreenHeight-100, 50, 50)];
+    _previewBtn.selected = NO;
+    [_previewBtn addTarget:self action:@selector(previewFunction:) forControlEvents:UIControlEventTouchUpInside];
+    [_bgView addSubview:_previewBtn];
+    // 录制视频
+    _videoBtn = [[UIButton alloc] initWithFrame:CGRectMake((kScreenWidth-70)/2, kScreenHeight-110, 70, 70)];
+    _videoBtn.selected = NO;
+    [_videoBtn setImage:[UIImage imageNamed:@"media_video"] forState:UIControlStateNormal];
+    [_videoBtn setImage:[UIImage imageNamed:@"media_video_down"] forState:UIControlStateSelected];
+    [_videoBtn addTarget:self action:@selector(captureVideo:) forControlEvents:UIControlEventTouchUpInside];
+    [_bgView addSubview:_videoBtn];
+    // 拍照
+    _photoBtn = [[UIButton alloc] initWithFrame:CGRectMake((kScreenWidth-70)/2, kScreenHeight-110, 70, 70)];
+    [_photoBtn setImage:[UIImage imageNamed:@"media_camera"] forState:UIControlStateNormal];
+    [_photoBtn setImage:[UIImage imageNamed:@"media_camera_down"] forState:UIControlStateHighlighted];
+    [_photoBtn addTarget:self action:@selector(capturePhoto:) forControlEvents:UIControlEventTouchUpInside];
+    [_bgView addSubview:_photoBtn];
+    // 切换
+    _switchBtn = [[UIButton alloc] initWithFrame:CGRectMake(kScreenWidth-65, kScreenHeight-100, 50, 50)];
+    _switchBtn.selected = NO;
+    [_switchBtn setImage:[UIImage imageNamed:@"media_note_video"] forState:UIControlStateNormal];
+    [_switchBtn setImage:[UIImage imageNamed:@"media_note_camera"] forState:UIControlStateSelected];
+    [_switchBtn addTarget:self action:@selector(switchFunction:) forControlEvents:UIControlEventTouchUpInside];
+    [_bgView addSubview:_switchBtn];
+    // 对焦
+    _focusImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"media_focus"]];
+    _focusImageView.alpha = 0;
+    [_bgView addSubview:_focusImageView];
+    // 录制时间
+    _timeLabel = [[UILabel alloc] initWithFrame:CGRectMake((kScreenWidth-85)/2, kStatusHeight, 80, kNavHeight)];
+    _timeLabel.backgroundColor = [UIColor clearColor];
+    _timeLabel.font = [UIFont systemFontOfSize:18.0];
+    _timeLabel.textColor = [UIColor whiteColor];
+    [_bgView addSubview:_timeLabel];
+    // 闪烁点
+    _dotImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"media_dot"]];
+    _dotImageView.center = self.timeLabel.center;
+    _dotImageView.right = self.timeLabel.left-5;
+    _dotImageView.animationImages = @[[UIImage imageNamed:@"media_dot"],[UIImage imageNamed:@"media_dot_clear"]];
+    _dotImageView.animationDuration = 0.8;
+    [_bgView addSubview:_dotImageView];
+    
+    // 对焦
+    UITapGestureRecognizer *focusTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(focusGesture:)];
+    [focusTap setNumberOfTapsRequired:1];
+    [self.bgView addGestureRecognizer:focusTap];
+    // 伸缩
+    UITapGestureRecognizer *zoomTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(zoomGesture:)];
+    [zoomTap setNumberOfTapsRequired:2];
+    [self.bgView addGestureRecognizer:zoomTap];
+    [focusTap requireGestureRecognizerToFail:zoomTap];
+    
+    self.dotImageView.hidden = YES;
+    self.videoBtn.hidden = YES;
+    self.flashView.hidden = YES;
 }
 
-- (UILabel *)timeLabel
-{
-    if (!_timeLabel) {
-        _timeLabel = [[UILabel alloc] initWithFrame:CGRectMake((kScreenWidth-85)/2, kStatusHeight, 80, kNavHeight)];
-        _timeLabel.backgroundColor = [UIColor clearColor];
-        _timeLabel.font = [UIFont systemFontOfSize:18.0];
-        _timeLabel.textColor = [UIColor whiteColor];
-    }
-    return _timeLabel;
-}
-
-- (UIImageView *)dotImageView
-{
-    if (!_dotImageView) {
-        _dotImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"media_dot"]];
-        _dotImageView.center = self.timeLabel.center;
-        _dotImageView.right = self.timeLabel.left-5;
-        _dotImageView.animationImages = @[[UIImage imageNamed:@"media_dot"],[UIImage imageNamed:@"media_dot_clear"]];
-        _dotImageView.animationDuration = 0.8;
-    }
-    return _dotImageView;
-}
-
-- (UIButton *)videoBtn
-{
-    if (!_videoBtn) {
-        _videoBtn = [[UIButton alloc] initWithFrame:CGRectMake((kScreenWidth-70)/2, kScreenHeight-110, 70, 70)];
-        _videoBtn.selected = NO;
-        [_videoBtn setImage:[UIImage imageNamed:@"media_video"] forState:UIControlStateNormal];
-        [_videoBtn setImage:[UIImage imageNamed:@"media_video_down"] forState:UIControlStateSelected];
-        [_videoBtn addTarget:self action:@selector(captureVideo:) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _videoBtn;
-}
-
-- (UIButton *)photoBtn
-{
-    if (!_photoBtn) {
-        _photoBtn = [[UIButton alloc] initWithFrame:CGRectMake((kScreenWidth-70)/2, kScreenHeight-110, 70, 70)];
-        [_photoBtn setImage:[UIImage imageNamed:@"media_camera"] forState:UIControlStateNormal];
-        [_photoBtn setImage:[UIImage imageNamed:@"media_camera_down"] forState:UIControlStateHighlighted];
-        [_photoBtn addTarget:self action:@selector(capturePhoto:) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _photoBtn;
-}
-
-- (UIButton *)switchBtn
-{
-    if (!_switchBtn) {
-        _switchBtn = [[UIButton alloc] initWithFrame:CGRectMake(kScreenWidth-65, kScreenHeight-100, 50, 50)];
-        _switchBtn.selected = NO;
-        [_switchBtn setImage:[UIImage imageNamed:@"media_note_video"] forState:UIControlStateNormal];
-        [_switchBtn setImage:[UIImage imageNamed:@"media_note_camera"] forState:UIControlStateSelected];
-        [_switchBtn addTarget:self action:@selector(switchFunction:) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _switchBtn;
-}
-
-- (UIButton *)previewBtn
-{
-    if (!_previewBtn) {
-        _previewBtn = [[UIButton alloc] initWithFrame:CGRectMake(15, kScreenHeight-100, 50, 50)];
-        _previewBtn.selected = NO;
-        [_previewBtn addTarget:self action:@selector(previewFunction:) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _previewBtn;
-}
-
-- (UIImageView *)focusImageView
-{
-    if (!_focusImageView) {
-        _focusImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"media_focus"]];
-        _focusImageView.alpha = 0;
-    }
-    return _focusImageView;
-}
-
+#pragma mark- lazy load
 - (AVCaptureMovieFileOutput *)movieFileOutput
 {
     if (!_movieFileOutput) {

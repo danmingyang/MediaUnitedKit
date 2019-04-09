@@ -12,16 +12,12 @@
 
 // 颜色转图片
 + (UIImage *)imageFromColor:(UIColor *)color;
-
 // 图像黑白处理
 - (UIImage *)sketchImage;
-
 // 等比压缩
 - (UIImage *)imageScaleAspectToMaxSize:(CGFloat)newSize;
-
 // 添加边框
 - (UIImage *)imageAddBorderByIndex:(NSInteger)index;
-
 // 图片旋转
 - (UIImage *)rotateImage;
 

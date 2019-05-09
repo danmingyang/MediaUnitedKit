@@ -1,12 +1,12 @@
 platform :ios, '8.0'
 
 target 'MediaUnitedKit' do
-    
-    pod "mp3lame-for-ios"
-    pod "FMDB"
-    pod "GPUImage"
-    pod "MMPhotoPicker"
-    pod "UUButton"
-    pod "UMengAnalytics-NO-IDFA"
+  
+  pod "UMengAnalytics-NO-IDFA"
+  pod "mp3lame-for-ios"
+  pod "FMDB"
+  pod "GPUImage"
+  pod "MMPhotoPicker"
+  pod "UUButton"
 
 end
